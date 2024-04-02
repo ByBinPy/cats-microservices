@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  cat_db:
+    image: postgres
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "12345"
+      POSTGRES_DB: "pdb"
+    volumes:
+      - C:\Users\User\AppData\Roaming\JetBrains\IntelliJIdea2022.2\scratches\tech-labs\access-layer\database_conf\db_initialize:/docker-entrypoint-initdb.d
