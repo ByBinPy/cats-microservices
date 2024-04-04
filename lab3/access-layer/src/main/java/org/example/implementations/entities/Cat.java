@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import org.example.implementations.Colors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -12,6 +14,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Component
 @Table(schema = "cats_db", name = "cats")
 public class Cat {
     @Id
@@ -42,6 +45,7 @@ public class Cat {
             inverseJoinColumns= @JoinColumn(name="friend_id", referencedColumnName="id"))
     private Set<Cat> friends;
 
+    @Autowired
     public Cat(@NonNull String name,
                @NonNull LocalDate dateOfBirth,
                String breed,
