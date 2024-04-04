@@ -56,7 +56,7 @@ public class TestCrudCat {
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
         when(entityManager.find(Cat.class, 1L)).thenReturn(Cat);
 
-        Cat result = CatDao.getById(1L);
+        Cat result = CatDao.getById(1);
 
         verify(entityManagerFactory).createEntityManager();
         verify(entityManager).find(Cat.class, 1L);
@@ -74,7 +74,7 @@ public class TestCrudCat {
         when(entityManager.createQuery("FROM " + clazz.getName())).thenReturn(mockQuery);
         when(mockQuery.getResultList()).thenReturn(Cats);
 
-        List<Cat> result = CatDao.getAll();
+        List<Cat> result = CatDao.findAll();
 
         verify(entityManagerFactory).createEntityManager();
         verify(mockQuery).getResultList();

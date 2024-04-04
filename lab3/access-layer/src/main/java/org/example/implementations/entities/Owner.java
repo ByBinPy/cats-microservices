@@ -3,6 +3,8 @@ package org.example.implementations.entities;
 import jakarta.persistence.*;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -11,6 +13,7 @@ import java.util.List;
 @Entity
 @Setter
 @Table(schema = "cats_db", name = "owners")
+@Component
 public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +29,7 @@ public class Owner {
     @JoinColumn(name = "owner_id")
     List<Cat> cats;
 
+    @Autowired
     public Owner(String name, LocalDate dateOfBirth, List<Cat> cats) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;

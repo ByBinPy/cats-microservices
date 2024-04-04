@@ -1,14 +1,8 @@
 package org.example.declarations;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
-public interface Dao<T> {
-    T getById(final Long id);
-    List<T> getItems(final Integer from, final Integer count);
-    List<T> getAll();
-    Long getCount();
-    void saveOrUpdate(final T entity);
-    T update(final T entity);
-    void delete(final T entity);
-    void deleteById(final Long entityId);
+public interface Dao<T> extends JpaRepository<T, Integer> {
 }

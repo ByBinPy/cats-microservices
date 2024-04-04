@@ -56,7 +56,7 @@ public class TestCrudOwner {
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
         when(entityManager.find(Owner.class, 1L)).thenReturn(owner);
 
-        Owner result = ownerDao.getById(1L);
+        Owner result = ownerDao.getById(1);
 
         verify(entityManagerFactory).createEntityManager();
         verify(entityManager).find(Owner.class, 1L);
@@ -74,7 +74,7 @@ public class TestCrudOwner {
         when(entityManager.createQuery("FROM " + clazz.getName())).thenReturn(mockQuery);
         when(mockQuery.getResultList()).thenReturn(owners);
 
-        List<Owner> result = ownerDao.getAll();
+        List<Owner> result = ownerDao.findAll();
 
         verify(entityManagerFactory).createEntityManager();
         verify(mockQuery).getResultList();
