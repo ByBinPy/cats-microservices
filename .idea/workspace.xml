@@ -4,20 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="add repos">
-      <change afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/exceptions/SaveExistCat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/exceptions/SaveExistOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab2f8dde-edae-4552-b539-96fbedb28548.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ab2f8dde-edae-4552-b539-96fbedb28548.xml" afterDir="false" />
+    <list default="true" id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="replace">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_2024_13_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_2024_13_46__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_2024_13_53__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_2024_13_53__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_04_2024_17_42__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_04_2024_17_42__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/tmp" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/tmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/controllers/ExceptionHandlerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/controllers/OwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/controllers/OwnerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/services/OwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/services/OwnerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/test/java/TestCrudCat.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/test/java/TestCrudCat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/controllers/CatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/controllers/CatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/dto/CatDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/dto/CatDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/services/CatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/services/CatService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,6 +288,7 @@
       <workItem from="1712062535402" duration="470000" />
       <workItem from="1712240371568" duration="3248000" />
       <workItem from="1712301345774" duration="18345000" />
+      <workItem from="1712352765279" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="wrote special exceptions and logic for transfer">
       <created>1708870655403</created>
