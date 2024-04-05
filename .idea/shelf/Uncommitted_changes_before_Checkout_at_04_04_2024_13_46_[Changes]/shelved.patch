@@ -1,0 +1,522 @@
+Index: lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.implementations.entities;\r\n\r\nimport jakarta.persistence.*;\r\nimport lombok.Getter;\r\nimport lombok.NonNull;\r\nimport lombok.Setter;\r\nimport org.example.implementations.Colors;\r\n\r\nimport java.time.LocalDate;\r\nimport java.util.Set;\r\n\r\n@Entity\r\n@Getter\r\n@Setter\r\n@Table(schema = \"cats_db\", name = \"cats\")\r\npublic class Cat {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    private Long id;\r\n    @NonNull\r\n    @Column\r\n    private String name;\r\n    @NonNull\r\n    @Column(name = \"date_of_birth\", nullable = false)\r\n    private LocalDate dateOfBirth;\r\n    @Column\r\n    private String breed;\r\n    @Enumerated(EnumType.ORDINAL)\r\n    @Column(columnDefinition = \"colors\")\r\n    private Colors color;\r\n    @NonNull\r\n    @Setter\r\n    @ManyToOne(cascade = CascadeType.MERGE)\r\n    @JoinColumn(name = \"owner_id\", nullable = false)\r\n    private Owner owner;\r\n\r\n    @Setter\r\n    @ManyToMany(cascade = CascadeType.MERGE)\r\n    @JoinTable(schema = \"cats_db\",\r\n            name=\"friends\",\r\n            joinColumns=  @JoinColumn(name=\"cat_id\", referencedColumnName=\"id\"),\r\n            inverseJoinColumns= @JoinColumn(name=\"friend_id\", referencedColumnName=\"id\"))\r\n    private Set<Cat> friends;\r\n\r\n    public Cat(@NonNull String name,\r\n               @NonNull LocalDate dateOfBirth,\r\n               String breed,\r\n               Colors color,\r\n               @NonNull Owner owner,\r\n               Set<Long> friends) {\r\n        this.name = name;\r\n        this.dateOfBirth = dateOfBirth;\r\n        this.breed = breed;\r\n        this.color = color;\r\n        this.owner = owner;\r\n    }\r\n    public Cat() {\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java b/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java
+--- a/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java	(date 1712072166179)
+@@ -5,6 +5,8 @@
+ import lombok.NonNull;
+ import lombok.Setter;
+ import org.example.implementations.Colors;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Component;
+ 
+ import java.time.LocalDate;
+ import java.util.Set;
+@@ -12,6 +14,7 @@
+ @Entity
+ @Getter
+ @Setter
++@Component
+ @Table(schema = "cats_db", name = "cats")
+ public class Cat {
+     @Id
+@@ -42,6 +45,7 @@
+             inverseJoinColumns= @JoinColumn(name="friend_id", referencedColumnName="id"))
+     private Set<Cat> friends;
+ 
++    @Autowired
+     public Cat(@NonNull String name,
+                @NonNull LocalDate dateOfBirth,
+                String breed,
+Index: lab3/access-layer/src/test/java/TestCrudOwner.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import jakarta.persistence.EntityManager;\r\nimport jakarta.persistence.EntityManagerFactory;\r\nimport jakarta.persistence.EntityTransaction;\r\nimport jakarta.persistence.Query;\r\nimport org.example.implementations.dao.OwnerDaoImpl;\r\nimport org.example.implementations.entities.Owner;\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.junit.jupiter.api.Test;\r\nimport org.mockito.Mock;\r\nimport org.mockito.MockitoAnnotations;\r\n\r\nimport java.util.List;\r\n\r\nimport static org.junit.jupiter.api.Assertions.assertEquals;\r\nimport static org.mockito.Mockito.*;\r\nimport static org.mockito.internal.verification.VerificationModeFactory.times;\r\n\r\npublic class TestCrudOwner {\r\n    @Mock\r\n    private EntityManagerFactory entityManagerFactory;\r\n\r\n    @Mock\r\n    private EntityManager entityManager;\r\n    @Mock\r\n    private EntityTransaction mockTransaction;\r\n\r\n    private OwnerDaoImpl ownerDao;\r\n\r\n    @BeforeEach\r\n    void setUp() {\r\n        MockitoAnnotations.openMocks(this);\r\n        ownerDao = new OwnerDaoImpl(Owner.class, entityManagerFactory);\r\n    }\r\n\r\n    @Test\r\n    void saveOrUpdateOwner() {\r\n        Owner owner = new Owner();\r\n\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        when(entityManager.getTransaction()).thenReturn(mockTransaction);\r\n\r\n        ownerDao.saveOrUpdate(owner);\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(entityManager, times(2)).getTransaction();\r\n        verify(mockTransaction).begin();\r\n        verify(entityManager).merge(owner);\r\n        verify(mockTransaction).commit();\r\n        verify(entityManager).close();\r\n    }\r\n    @Test\r\n    void getByIdOwner() {\r\n        Owner owner = new Owner();\r\n        owner.setId(1);\r\n\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        when(entityManager.find(Owner.class, 1L)).thenReturn(owner);\r\n\r\n        Owner result = ownerDao.getById(1L);\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(entityManager).find(Owner.class, 1L);\r\n        verify(entityManager).close();\r\n\r\n        assertEquals(owner, result);\r\n    }\r\n\r\n    @Test\r\n    void getAllOwners() {\r\n        List<Owner> owners = List.of(new Owner(), new Owner());\r\n        Query mockQuery = mock(Query.class);\r\n        Class<?> clazz = Owner.class;\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        when(entityManager.createQuery(\"FROM \" + clazz.getName())).thenReturn(mockQuery);\r\n        when(mockQuery.getResultList()).thenReturn(owners);\r\n\r\n        List<Owner> result = ownerDao.getAll();\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(mockQuery).getResultList();\r\n        verify(entityManager).createQuery(\"FROM \" + clazz.getName());\r\n        verify(entityManager).close();\r\n\r\n        assertEquals(owners, result);\r\n    }\r\n\r\n    @Test\r\n    void getCountOwners() {\r\n        List<Owner> owners = List.of(new Owner(), new Owner());\r\n        Query mockQuery = mock(Query.class);\r\n        Class<?> clazz = Owner.class;\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        when(entityManager.createQuery(\"FROM \" + clazz.getName())).thenReturn(mockQuery);\r\n        when(mockQuery.getResultList()).thenReturn(owners);\r\n\r\n        Long count = ownerDao.getCount();\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(entityManager).createQuery(\"FROM \" + clazz.getName());\r\n        verify(mockQuery).getResultList();\r\n        verify(entityManager).close();\r\n\r\n        assertEquals(2L, count);\r\n    }\r\n    @Test\r\n    void getItemsOwners() {\r\n        List<Owner> owners = List.of(new Owner(), new Owner());\r\n        Query mockQuery = mock(Query.class);\r\n        Class<?> clazz = Owner.class;\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        when(entityManager.createQuery(\"FROM \" + clazz.getName())).thenReturn(mockQuery);\r\n        when(mockQuery.getResultList()).thenReturn(owners);\r\n        when(mockQuery.setFirstResult(0)).thenReturn(mockQuery);\r\n        when(mockQuery.setMaxResults(10)).thenReturn(mockQuery);\r\n\r\n        List<Owner> result = ownerDao.getItems(0, 10);\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(entityManager).createQuery(\"FROM \" + clazz.getName());\r\n        verify(mockQuery).getResultList();\r\n        verify(mockQuery).setFirstResult(0);\r\n        verify(mockQuery).setMaxResults(10);\r\n        verify(mockQuery).getResultList();\r\n        verify(entityManager).close();\r\n\r\n        assertEquals(owners, result);\r\n    }\r\n\r\n    @Test\r\n    void deleteOwner() {\r\n        Owner owner = new Owner();\r\n\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        ownerDao.delete(owner);\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(entityManager).remove(owner);\r\n        verify(entityManager).close();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab3/access-layer/src/test/java/TestCrudOwner.java b/lab3/access-layer/src/test/java/TestCrudOwner.java
+--- a/lab3/access-layer/src/test/java/TestCrudOwner.java	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/lab3/access-layer/src/test/java/TestCrudOwner.java	(date 1712163855059)
+@@ -56,7 +56,7 @@
+         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
+         when(entityManager.find(Owner.class, 1L)).thenReturn(owner);
+ 
+-        Owner result = ownerDao.getById(1L);
++        Owner result = ownerDao.getById(1);
+ 
+         verify(entityManagerFactory).createEntityManager();
+         verify(entityManager).find(Owner.class, 1L);
+Index: lab3/access-layer/src/test/java/TestCrudCat.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import jakarta.persistence.EntityManager;\r\nimport jakarta.persistence.EntityManagerFactory;\r\nimport jakarta.persistence.EntityTransaction;\r\nimport jakarta.persistence.Query;\r\nimport org.example.implementations.dao.CatDaoImpl;\r\nimport org.example.implementations.entities.Cat;\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.junit.jupiter.api.Test;\r\nimport org.mockito.Mock;\r\nimport org.mockito.MockitoAnnotations;\r\n\r\nimport java.util.List;\r\n\r\nimport static org.junit.jupiter.api.Assertions.assertEquals;\r\nimport static org.mockito.Mockito.*;\r\nimport static org.mockito.internal.verification.VerificationModeFactory.times;\r\n\r\npublic class TestCrudCat {\r\n    @Mock\r\n    private EntityManagerFactory entityManagerFactory;\r\n\r\n    @Mock\r\n    private EntityManager entityManager;\r\n    @Mock\r\n    private EntityTransaction mockTransaction;\r\n\r\n    private CatDaoImpl CatDao;\r\n\r\n    @BeforeEach\r\n    void setUp() {\r\n        MockitoAnnotations.openMocks(this);\r\n        CatDao = new CatDaoImpl(Cat.class, entityManagerFactory);\r\n    }\r\n\r\n    @Test\r\n    void saveOrUpdateCat() {\r\n        Cat Cat = new Cat();\r\n\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        when(entityManager.getTransaction()).thenReturn(mockTransaction);\r\n\r\n        CatDao.saveOrUpdate(Cat);\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(entityManager, times(2)).getTransaction();\r\n        verify(mockTransaction).begin();\r\n        verify(entityManager).merge(Cat);\r\n        verify(mockTransaction).commit();\r\n        verify(entityManager).close();\r\n    }\r\n    @Test\r\n    void getByIdCat() {\r\n        Cat Cat = new Cat();\r\n        Cat.setId(1L);\r\n\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        when(entityManager.find(Cat.class, 1L)).thenReturn(Cat);\r\n\r\n        Cat result = CatDao.getById(1L);\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(entityManager).find(Cat.class, 1L);\r\n        verify(entityManager).close();\r\n\r\n        assertEquals(Cat, result);\r\n    }\r\n\r\n    @Test\r\n    void getAllCats() {\r\n        List<Cat> Cats = List.of(new Cat(), new Cat());\r\n        Query mockQuery = mock(Query.class);\r\n        Class<?> clazz = Cat.class;\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        when(entityManager.createQuery(\"FROM \" + clazz.getName())).thenReturn(mockQuery);\r\n        when(mockQuery.getResultList()).thenReturn(Cats);\r\n\r\n        List<Cat> result = CatDao.getAll();\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(mockQuery).getResultList();\r\n        verify(entityManager).createQuery(\"FROM \" + clazz.getName());\r\n        verify(entityManager).close();\r\n\r\n        assertEquals(Cats, result);\r\n    }\r\n\r\n    @Test\r\n    void getCountCats() {\r\n        List<Cat> Cats = List.of(new Cat(), new Cat());\r\n        Query mockQuery = mock(Query.class);\r\n        Class<?> clazz = Cat.class;\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        when(entityManager.createQuery(\"FROM \" + clazz.getName())).thenReturn(mockQuery);\r\n        when(mockQuery.getResultList()).thenReturn(Cats);\r\n\r\n        Long count = CatDao.getCount();\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(entityManager).createQuery(\"FROM \" + clazz.getName());\r\n        verify(mockQuery).getResultList();\r\n        verify(entityManager).close();\r\n\r\n        assertEquals(2L, count);\r\n    }\r\n    @Test\r\n    void getItemsCats() {\r\n        List<Cat> Cats = List.of(new Cat(), new Cat());\r\n        Query mockQuery = mock(Query.class);\r\n        Class<?> clazz = Cat.class;\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        when(entityManager.createQuery(\"FROM \" + clazz.getName())).thenReturn(mockQuery);\r\n        when(mockQuery.getResultList()).thenReturn(Cats);\r\n        when(mockQuery.setFirstResult(0)).thenReturn(mockQuery);\r\n        when(mockQuery.setMaxResults(10)).thenReturn(mockQuery);\r\n\r\n        List<Cat> result = CatDao.getItems(0, 10);\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(entityManager).createQuery(\"FROM \" + clazz.getName());\r\n        verify(mockQuery).getResultList();\r\n        verify(mockQuery).setFirstResult(0);\r\n        verify(mockQuery).setMaxResults(10);\r\n        verify(mockQuery).getResultList();\r\n        verify(entityManager).close();\r\n\r\n        assertEquals(Cats, result);\r\n    }\r\n\r\n    @Test\r\n    void deleteCat() {\r\n        Cat Cat = new Cat();\r\n\r\n        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);\r\n        CatDao.delete(Cat);\r\n\r\n        verify(entityManagerFactory).createEntityManager();\r\n        verify(entityManager).remove(Cat);\r\n        verify(entityManager).close();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab3/access-layer/src/test/java/TestCrudCat.java b/lab3/access-layer/src/test/java/TestCrudCat.java
+--- a/lab3/access-layer/src/test/java/TestCrudCat.java	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/lab3/access-layer/src/test/java/TestCrudCat.java	(date 1712163855080)
+@@ -56,7 +56,7 @@
+         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
+         when(entityManager.find(Cat.class, 1L)).thenReturn(Cat);
+ 
+-        Cat result = CatDao.getById(1L);
++        Cat result = CatDao.getById(1);
+ 
+         verify(entityManagerFactory).createEntityManager();
+         verify(entityManager).find(Cat.class, 1L);
+Index: lab3/access-layer/src/main/java/org/example/declarations/HibernateDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.declarations;\r\n\r\nimport jakarta.persistence.EntityManager;\r\nimport jakarta.persistence.EntityManagerFactory;\r\n\r\nimport java.util.List;\r\n\r\npublic abstract class HibernateDao<T> implements Dao<T> {\r\n    private final Class<T> clazz;\r\n    protected final EntityManagerFactory entityManagerFactory;\r\n\r\n    protected HibernateDao(Class<T> clazz, EntityManagerFactory entityManagerFactory) {\r\n        this.clazz = clazz;\r\n        this.entityManagerFactory = entityManagerFactory;\r\n    }\r\n\r\n    @Override\r\n    public T getById(final Long id) {\r\n        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {\r\n            return entityManager.find(clazz, id);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public List<T> getAll() {\r\n        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {\r\n            return entityManager.createQuery(\"FROM \" + clazz.getName()).getResultList();\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public Long getCount() {\r\n        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {\r\n            return (long) entityManager.createQuery(\"FROM \" + clazz.getName()).getResultList().size();\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public List<T> getItems(final Integer from, final Integer count) {\r\n        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {\r\n            return entityManager.createQuery(\"FROM \" + clazz.getName())\r\n                    .setFirstResult(from)\r\n                    .setMaxResults(count)\r\n                    .getResultList();\r\n        }\r\n    }\r\n\r\n    public void saveOrUpdate(final T entity) {\r\n        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {\r\n            entityManager.getTransaction().begin();\r\n            entityManager.merge(entity);\r\n            entityManager.getTransaction().commit();\r\n        }\r\n    }\r\n\r\n    public T update(final T entity) {\r\n        try (EntityManager entityManager = entityManagerFactory.createEntityManager()){\r\n            return entityManager.merge(entity);\r\n        }\r\n    }\r\n\r\n    public void delete(final T entity) {\r\n        try (EntityManager entityManager = entityManagerFactory.createEntityManager()){\r\n            entityManager.remove(entity);\r\n        }\r\n    }\r\n\r\n    public void deleteById(final Long entityId) {\r\n        T entity = getById(entityId);\r\n        delete(entity);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab3/access-layer/src/main/java/org/example/declarations/HibernateDao.java b/lab3/access-layer/src/main/java/org/example/declarations/HibernateDao.java
+--- a/lab3/access-layer/src/main/java/org/example/declarations/HibernateDao.java	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/lab3/access-layer/src/main/java/org/example/declarations/HibernateDao.java	(date 1712165140856)
+@@ -2,11 +2,13 @@
+ 
+ import jakarta.persistence.EntityManager;
+ import jakarta.persistence.EntityManagerFactory;
++import jakarta.persistence.PersistenceContext;
+ 
+ import java.util.List;
+ 
+-public abstract class HibernateDao<T> implements Dao<T> {
++public abstract class HibernateDao<T> implements Dao<T, Integer> {
+     private final Class<T> clazz;
++    @PersistenceContext
+     protected final EntityManagerFactory entityManagerFactory;
+ 
+     protected HibernateDao(Class<T> clazz, EntityManagerFactory entityManagerFactory) {
+@@ -15,12 +17,16 @@
+     }
+ 
+     @Override
+-    public T getById(final Long id) {
++    public T getById(final Integer id) {
+         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
+             return entityManager.find(clazz, id);
+         }
+     }
+ 
++    @Override
++    List<T> saveAll(Iterable<T> entities) {
++
++    }
+     @Override
+     public List<T> getAll() {
+         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
+@@ -65,7 +71,7 @@
+         }
+     }
+ 
+-    public void deleteById(final Long entityId) {
++    public void deleteById(final Integer entityId) {
+         T entity = getById(entityId);
+         delete(entity);
+     }
+Index: lab3/access-layer/src/main/java/org/example/implementations/dao/CatDaoImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.implementations.dao;\r\n\r\nimport jakarta.persistence.EntityManager;\r\nimport jakarta.persistence.EntityManagerFactory;\r\nimport org.example.declarations.HibernateDao;\r\nimport org.example.implementations.entities.Cat;\r\n\r\npublic class CatDaoImpl extends HibernateDao <Cat> {\r\n    public CatDaoImpl(Class<Cat> clazz, EntityManagerFactory entityManagerFactory) {\r\n        super(clazz, entityManagerFactory);\r\n    }\r\n    public void addFriend(Long cat_id, Long friend_id) {\r\n        try(EntityManager entityManager = entityManagerFactory.createEntityManager()) {\r\n            entityManager.getTransaction().begin();\r\n            Cat cat = entityManager.find(Cat.class, cat_id);\r\n            Cat friend = entityManager.find(Cat.class, friend_id);\r\n            friend.getFriends().add(cat);\r\n            cat.getFriends().add(friend);\r\n            entityManager.getTransaction().commit();\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab3/access-layer/src/main/java/org/example/implementations/dao/CatDaoImpl.java b/lab3/access-layer/src/main/java/org/example/implementations/dao/CatDaoImpl.java
+--- a/lab3/access-layer/src/main/java/org/example/implementations/dao/CatDaoImpl.java	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/lab3/access-layer/src/main/java/org/example/implementations/dao/CatDaoImpl.java	(date 1712164168490)
+@@ -4,8 +4,14 @@
+ import jakarta.persistence.EntityManagerFactory;
+ import org.example.declarations.HibernateDao;
+ import org.example.implementations.entities.Cat;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Component;
+ 
++@Component
+ public class CatDaoImpl extends HibernateDao <Cat> {
++
++
++    @Autowired
+     public CatDaoImpl(Class<Cat> clazz, EntityManagerFactory entityManagerFactory) {
+         super(clazz, entityManagerFactory);
+     }
+Index: lab3/access-layer/src/main/java/org/example/declarations/Dao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.declarations;\r\n\r\nimport java.util.List;\r\n\r\npublic interface Dao<T> {\r\n    T getById(final Long id);\r\n    List<T> getItems(final Integer from, final Integer count);\r\n    List<T> getAll();\r\n    Long getCount();\r\n    void saveOrUpdate(final T entity);\r\n    T update(final T entity);\r\n    void delete(final T entity);\r\n    void deleteById(final Long entityId);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab3/access-layer/src/main/java/org/example/declarations/Dao.java b/lab3/access-layer/src/main/java/org/example/declarations/Dao.java
+--- a/lab3/access-layer/src/main/java/org/example/declarations/Dao.java	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/lab3/access-layer/src/main/java/org/example/declarations/Dao.java	(date 1712163658975)
+@@ -1,14 +1,19 @@
+ package org.example.declarations;
+ 
++
++import org.springframework.data.jpa.repository.JpaRepository;
++import org.springframework.stereotype.Component;
++
+ import java.util.List;
+ 
+-public interface Dao<T> {
+-    T getById(final Long id);
+-    List<T> getItems(final Integer from, final Integer count);
++@Component
++public interface Dao<T, ID> extends JpaRepository<T, ID> {
++    T getById(final ID id);
++    List<T> getItems(final ID from, final ID count);
+     List<T> getAll();
+     Long getCount();
+     void saveOrUpdate(final T entity);
+     T update(final T entity);
+     void delete(final T entity);
+-    void deleteById(final Long entityId);
++    void deleteById(final ID entityId);
+ }
+Index: lab3/access-layer/src/main/resources/META-INF/persistence.xml
+===================================================================
+diff --git a/lab3/access-layer/src/main/resources/META-INF/persistence.xml b/lab3/access-layer/src/main/resources/META-INF/persistence.xml
+deleted file mode 100644
+--- a/lab3/access-layer/src/main/resources/META-INF/persistence.xml	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ /dev/null	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
+@@ -1,16 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+-    <persistence-unit name="myUnit">
+-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+-        <class>org.example.implementations.entities.Owner</class>
+-        <class>org.example.implementations.entities.Cat</class>
+-        <properties>
+-            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
+-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5434/pdb" />
+-            <property name="jakarta.persistence.jdbc.user" value="root" />
+-            <property name="jakarta.persistence.jdbc.password" value="12345" />
+-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+-            <property name="hibernate.show_sql" value="true" />
+-        </properties>
+-    </persistence-unit>
+-</persistence>
+Index: lab3/access-layer/src/main/java/org/example/implementations/util/HibernateUtil.java
+===================================================================
+diff --git a/lab3/access-layer/src/main/java/org/example/implementations/util/HibernateUtil.java b/lab3/access-layer/src/main/java/org/example/implementations/util/HibernateUtil.java
+deleted file mode 100644
+--- a/lab3/access-layer/src/main/java/org/example/implementations/util/HibernateUtil.java	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ /dev/null	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
+@@ -1,19 +0,0 @@
+-package org.example.implementations.util;
+-
+-import jakarta.persistence.EntityManagerFactory;
+-import jakarta.persistence.Persistence;
+-
+-
+-public class HibernateUtil {
+-    private static EntityManagerFactory entityManagerFactory;
+-    public static EntityManagerFactory getEntityManagerFactory() {
+-        if (entityManagerFactory == null) {
+-            try {
+-                entityManagerFactory = Persistence.createEntityManagerFactory("myUnit");
+-            } catch (Throwable exception) {
+-                throw new RuntimeException(exception.getMessage());
+-            }
+-        }
+-        return entityManagerFactory;
+-    }
+-}
+\ No newline at end of file
+Index: lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.implementations.entities;\r\n\r\nimport jakarta.persistence.*;\r\nimport lombok.Setter;\r\nimport org.hibernate.annotations.Cascade;\r\n\r\nimport java.sql.Date;\r\nimport java.time.LocalDate;\r\nimport java.util.List;\r\n\r\n@Entity\r\n@Setter\r\n@Table(schema = \"cats_db\", name = \"owners\")\r\npublic class Owner {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    Integer id;\r\n\r\n    @Column\r\n    String name;\r\n\r\n    @Column(name = \"date_of_birth\")\r\n    LocalDate dateOfBirth;\r\n\r\n    @OneToMany(cascade = CascadeType.MERGE)\r\n    @JoinColumn(name = \"owner_id\")\r\n    List<Cat> cats;\r\n\r\n    public Owner(String name, LocalDate dateOfBirth, List<Cat> cats) {\r\n        this.name = name;\r\n        this.dateOfBirth = dateOfBirth;\r\n        this.cats = cats;\r\n    }\r\n\r\n    public Owner() {\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java b/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java
+--- a/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java	(date 1712072166169)
+@@ -3,6 +3,8 @@
+ import jakarta.persistence.*;
+ import lombok.Setter;
+ import org.hibernate.annotations.Cascade;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Component;
+ 
+ import java.sql.Date;
+ import java.time.LocalDate;
+@@ -11,6 +13,7 @@
+ @Entity
+ @Setter
+ @Table(schema = "cats_db", name = "owners")
++@Component
+ public class Owner {
+     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+@@ -25,7 +28,7 @@
+     @OneToMany(cascade = CascadeType.MERGE)
+     @JoinColumn(name = "owner_id")
+     List<Cat> cats;
+-
++    @Autowired
+     public Owner(String name, LocalDate dateOfBirth, List<Cat> cats) {
+         this.name = name;
+         this.dateOfBirth = dateOfBirth;
+Index: lab3/access-layer/src/main/java/org/example/implementations/dao/OwnerDaoImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.implementations.dao;\r\n\r\nimport jakarta.persistence.EntityManagerFactory;\r\nimport org.example.declarations.HibernateDao;\r\nimport org.example.implementations.entities.Owner;\r\n\r\npublic class OwnerDaoImpl extends HibernateDao <Owner> {\r\n    public OwnerDaoImpl(Class<Owner> clazz, EntityManagerFactory entityManagerFactory) {\r\n        super(clazz, entityManagerFactory);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab3/access-layer/src/main/java/org/example/implementations/dao/OwnerDaoImpl.java b/lab3/access-layer/src/main/java/org/example/implementations/dao/OwnerDaoImpl.java
+--- a/lab3/access-layer/src/main/java/org/example/implementations/dao/OwnerDaoImpl.java	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/lab3/access-layer/src/main/java/org/example/implementations/dao/OwnerDaoImpl.java	(date 1712072166160)
+@@ -3,8 +3,12 @@
+ import jakarta.persistence.EntityManagerFactory;
+ import org.example.declarations.HibernateDao;
+ import org.example.implementations.entities.Owner;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Component;
+ 
++@Component
+ public class OwnerDaoImpl extends HibernateDao <Owner> {
++    @Autowired
+     public OwnerDaoImpl(Class<Owner> clazz, EntityManagerFactory entityManagerFactory) {
+         super(clazz, entityManagerFactory);
+     }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"89dad17c-dd13-46ff-989f-d82fd8ab82f6\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2dGwpqcK0SMTJDV3kWIYEJwAraN\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"nodejs_package_manager_path\": \"npm\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"89dad17c-dd13-46ff-989f-d82fd8ab82f6\" name=\"Changes\" comment=\"\" />\r\n      <created>1709647908764</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1709647908764</updated>\r\n      <workItem from=\"1709647910016\" duration=\"130000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/.idea/workspace.xml	(date 1712214114660)
+@@ -1,25 +1,117 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="" />
++    <list default="true" id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="add lab2">
++      <change afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/resources/application.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/build.gradle" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/declarations/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/declarations/Dao.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/declarations/HibernateDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/declarations/HibernateDao.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/dao/CatDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/dao/CatDaoImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/dao/OwnerDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/dao/OwnerDaoImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/util/HibernateUtil.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/test/java/TestCrudCat.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/test/java/TestCrudCat.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/test/java/TestCrudOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/test/java/TestCrudOwner.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lab3/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/build.gradle" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
++  <component name="ExternalProjectsData">
++    <projectState path="$PROJECT_DIR$">
++      <ProjectState />
++    </projectState>
++    <projectState path="$PROJECT_DIR$/lab2/tmp">
++      <ProjectState />
++    </projectState>
++    <projectState path="$PROJECT_DIR$/lab3">
++      <ProjectState />
++    </projectState>
++    <projectState path="$PROJECT_DIR$/lab3/access-layer">
++      <ProjectState />
++    </projectState>
++  </component>
++  <component name="ExternalProjectsManager">
++    <system id="GRADLE">
++      <state>
++        <task path="$PROJECT_DIR$">
++          <activation />
++        </task>
++        <projects_view>
++          <tree_state>
++            <expand>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="tech-labs" type="f1a62948:ProjectNode" />
++              </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="tech-labs" type="f1a62948:ProjectNode" />
++                <item name="access-layer" type="2d1252cf:ModuleNode" />
++              </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="tech-labs" type="f1a62948:ProjectNode" />
++                <item name="controller" type="2d1252cf:ModuleNode" />
++              </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="tech-labs" type="f1a62948:ProjectNode" />
++                <item name="service" type="2d1252cf:ModuleNode" />
++              </path>
++            </expand>
++            <select />
++          </tree_state>
++        </projects_view>
++      </state>
++    </system>
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
+   <component name="ProjectId" id="2dGwpqcK0SMTJDV3kWIYEJwAraN" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "nodejs_package_manager_path": "npm"
+-  }
+-}]]></component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/AppData/Roaming/JetBrains/IntelliJIdea2022.2/scratches/ByBinPy/lab3&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;spring.configuration.checksum&quot;: &quot;fb22b66412e4a5a1e68f2de9e98b1703&quot;
++  }
++}</component>
++  <component name="RecentsManager">
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\User\AppData\Roaming\JetBrains\IntelliJIdea2022.2\scratches\ByBinPy\lab3" />
++    </key>
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\User\AppData\Roaming\JetBrains\IntelliJIdea2022.2\scratches\ByBinPy\lab3" />
++    </key>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -29,10 +121,23 @@
+       <option name="presentableId" value="Default" />
+       <updated>1709647908764</updated>
+       <workItem from="1709647910016" duration="130000" />
++      <workItem from="1712148495426" duration="271000" />
++      <workItem from="1712153429302" duration="5274000" />
+     </task>
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+ </project>
+\ No newline at end of file
+Index: lab3/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'java'\r\n}\r\n\r\ngroup 'org.example'\r\nversion '1.0-SNAPSHOT'\r\n\r\nrepositories {\r\n    mavenCentral()\r\n}\r\n\r\ndependencies {\r\n    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'\r\n    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'\r\n    testImplementation 'org.mockito:mockito-inline:4.0.0'\r\n    testImplementation 'org.mockito:mockito-junit-jupiter:4.0.0'\r\n}\r\n\r\ntest {\r\n    useJUnitPlatform()\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab3/build.gradle b/lab3/build.gradle
+--- a/lab3/build.gradle	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/lab3/build.gradle	(date 1712071097937)
+@@ -1,5 +1,6 @@
+ plugins {
+     id 'java'
++    id 'org.springframework.boot' version '2.7.5'
+ }
+ 
+ group 'org.example'
+Index: lab3/access-layer/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'java'\r\n    id 'org.hibernate.orm' version '6.4.4.Final'\r\n}\r\n\r\ngroup 'org.example'\r\n\r\nrepositories {\r\n    mavenCentral()\r\n}\r\n\r\ndependencies {\r\n    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'\r\n    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'\r\n    compileOnly 'org.projectlombok:lombok:1.18.30'\r\n    annotationProcessor 'org.projectlombok:lombok:1.18.30'\r\n    testCompileOnly 'org.projectlombok:lombok:1.18.30'\r\n    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'\r\n    implementation 'org.postgresql:postgresql:42.5.1'\r\n    testImplementation 'org.mockito:mockito-inline:4.0.0'\r\n    testImplementation 'org.mockito:mockito-junit-jupiter:4.0.0'\r\n}\r\n\r\ntest {\r\n    useJUnitPlatform()\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab3/access-layer/build.gradle b/lab3/access-layer/build.gradle
+--- a/lab3/access-layer/build.gradle	(revision cbc2441056ace95537084ccd8bed77b40cf67a0d)
++++ b/lab3/access-layer/build.gradle	(date 1712072696531)
+@@ -1,6 +1,7 @@
+ plugins {
+     id 'java'
+     id 'org.hibernate.orm' version '6.4.4.Final'
++    id 'org.springframework.boot' version '2.7.5'
+ }
+ 
+ group 'org.example'
+@@ -10,7 +11,15 @@
+ }
+ 
+ dependencies {
++    implementation platform('org.springframework.boot:spring-boot-dependencies:2.7.8')
++
++    implementation 'org.springframework.boot:spring-boot-starter'
++    testImplementation('org.springframework.boot:spring-boot-starter-test') {
++        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
++    }
++    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
++    implementation 'org.springframework.data:spring-data-jpa:3.1.3'
+     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+     compileOnly 'org.projectlombok:lombok:1.18.30'
+     annotationProcessor 'org.projectlombok:lombok:1.18.30'
+Index: lab3/access-layer/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/lab3/access-layer/src/main/resources/application.properties b/lab3/access-layer/src/main/resources/application.properties
+new file mode 100644
+--- /dev/null	(date 1712160299557)
++++ b/lab3/access-layer/src/main/resources/application.properties	(date 1712160299557)
+@@ -0,0 +1,5 @@
++spring.datasource.url=jdbc:postgresql://localhost:5434/pdb
++spring.jpa.show-sql=true
++spring.datasource.username=root
++spring.datasource.password=12345
++spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+\ No newline at end of file
