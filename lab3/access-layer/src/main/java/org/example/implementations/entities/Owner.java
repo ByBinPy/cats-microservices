@@ -2,12 +2,6 @@ package org.example.implementations.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Setter;
-import org.hibernate.annotations.Cascade;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
