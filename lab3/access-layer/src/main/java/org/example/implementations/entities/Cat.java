@@ -31,7 +31,6 @@ public class Cat {
     @Enumerated(EnumType.ORDINAL)
     @Column(columnDefinition = "colors")
     private Colors color;
-    @NonNull
     @Setter
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "owner_id", nullable = false)

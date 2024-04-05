@@ -1,6 +1,5 @@
 package org.example.controllers;
 
-import org.example.exceptions.UnknownOwner;
 import org.example.impl.dto.OwnerDto;
 import org.example.impl.services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,21 @@ public class OwnerController {
     }
 
     @GetMapping("/find")
-    public ResponseEntity<?> getCatById(@RequestParam Integer catId) throws UnknownOwner {
-        return ownerService.getById(catId);
+    public ResponseEntity<?> getCatById(@RequestParam Integer ownerId) {
+        return ownerService.getById(ownerId);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<OwnerDto> saveOwner(){
+    public ResponseEntity<?> saveOwner(@RequestBody OwnerDto ownerDto) {
+        return ownerService.save(ownerDto);
+    }
+    @DeleteMapping("/delete/{id}")
+    public void deleteOwner(@PathVariable("id") Integer ownerId) {
+        ownerService.delete(ownerId);
+    }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateOwner(@PathVariable("id") Integer id, @RequestBody OwnerDto ownerDto){
+        return ownerService.update(id, ownerDto);
     }
 }
