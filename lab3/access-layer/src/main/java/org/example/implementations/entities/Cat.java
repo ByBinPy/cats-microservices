@@ -19,7 +19,7 @@ import java.util.Set;
 public class Cat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @NonNull
     @Column
     private String name;

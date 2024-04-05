@@ -51,7 +51,7 @@ public class TestCrudCat {
     @Test
     void getByIdCat() {
         Cat Cat = new Cat();
-        Cat.setId(1L);
+        Cat.setId(1);
 
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
         when(entityManager.find(Cat.class, 1L)).thenReturn(Cat);
