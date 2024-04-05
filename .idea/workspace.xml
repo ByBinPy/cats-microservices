@@ -4,24 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="add lab2">
-      <change afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+    <list default="true" id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="add repos">
+      <change afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/declarations/CatDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/declarations/OwnerDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/controllers/CatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/controllers/ExceptionHandlerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/controllers/OwnerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/controller/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/exceptions/UnknownCat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/exceptions/UnknownOwner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/dto/CatDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/dto/OwnerDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/services/CatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/services/OwnerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3/service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab3/access-layer/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/declarations/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/declarations/Dao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/declarations/HibernateDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/dao/CatDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/dao/OwnerDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/declarations/Dao.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/util/HibernateUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/test/java/TestCrudCat.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/test/java/TestCrudCat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/test/java/TestCrudOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/test/java/TestCrudOwner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab3/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab3/controller/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/controller/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lab3/service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,24 +64,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="tech-labs" type="f1a62948:ProjectNode" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="tech-labs" type="f1a62948:ProjectNode" />
-                <item name="access-layer" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="tech-labs" type="f1a62948:ProjectNode" />
-                <item name="access-layer" type="2d1252cf:ModuleNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="tech-labs" type="f1a62948:ProjectNode" />
-                <item name="access-layer" type="2d1252cf:ModuleNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -84,10 +75,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Enum" />
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Record" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -112,6 +103,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelOrder2": "2",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RequestMappingsPanelWidth2": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -124,7 +121,12 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "spring.configuration.checksum": "cbcce622b111760b5dc09506e299e141"
+    "spring.configuration.checksum": "8fab5dc91433deb409eb00b4f88ce01d"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -153,97 +155,14 @@
       <command value="gradle access-layer:build" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.lab3 [dependencies]">
-    <configuration name="AccountTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;AccountTests&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="AccountTests.checkTransferBetweenDifferenceBanks" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;AccountTests.checkTransferBetweenDifferenceBanks&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="AccountTests.checkTransferCancellationBetweenDifferenceBanks" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;AccountTests.checkTransferCancellationBetweenDifferenceBanks&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="lab3 [access-layer:build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/lab3" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="access-layer:build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Application (1)">
     <configuration name="lab3 [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -278,24 +197,86 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="tech-labs.controller.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="tech-labs.controller.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="tech-labs.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.RunApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="database_conf/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="lab3/access-layer/database_conf/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="database_conf/docker-compose.yaml.cat_db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="cat_db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="lab3/access-layer/database_conf/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Gradle.lab3 [access-layer:build]" />
+      <item itemvalue="Docker.database_conf/docker-compose.yaml.cat_db: Compose Deployment" />
+      <item itemvalue="Docker.database_conf/docker-compose.yaml: Compose Deployment" />
       <item itemvalue="Gradle.lab3 [dependencies]" />
-      <item itemvalue="Gradle.AccountTests.checkTransferBetweenDifferenceBanks" />
-      <item itemvalue="Gradle.AccountTests.checkTransferCancellationBetweenDifferenceBanks" />
-      <item itemvalue="Gradle.AccountTests" />
+      <item itemvalue="Spring Boot.Application" />
+      <item itemvalue="Spring Boot.Application (1)" />
+      <item itemvalue="Spring Boot.RunApplication (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Application (1)" />
+        <item itemvalue="Spring Boot.RunApplication (1)" />
+        <item itemvalue="Docker.database_conf/docker-compose.yaml.cat_db: Compose Deployment" />
+        <item itemvalue="Docker.database_conf/docker-compose.yaml: Compose Deployment" />
         <item itemvalue="Gradle.lab3 [dependencies]" />
-        <item itemvalue="Gradle.lab3 [access-layer:build]" />
-        <item itemvalue="Gradle.AccountTests" />
-        <item itemvalue="Gradle.AccountTests.checkTransferCancellationBetweenDifferenceBanks" />
-        <item itemvalue="Gradle.AccountTests.checkTransferBetweenDifferenceBanks" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBeansView">
+    <option name="showFiles" value="false" />
+    <option name="showImplicitBeans" value="false" />
+  </component>
+  <component name="SpringMvcView">
+    <option name="showControllers" value="false" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="add lab2" />
@@ -320,7 +301,8 @@
       <workItem from="1712061197844" duration="285000" />
       <workItem from="1712061495849" duration="44000" />
       <workItem from="1712062535402" duration="470000" />
-      <workItem from="1712240371568" duration="1511000" />
+      <workItem from="1712240371568" duration="3248000" />
+      <workItem from="1712301345774" duration="18345000" />
     </task>
     <task id="LOCAL-00001" summary="wrote special exceptions and logic for transfer">
       <created>1708870655403</created>
@@ -420,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712064418867</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add repos">
+      <created>1712242002546</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1712242002546</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,6 +493,7 @@
     <MESSAGE value="add: tests&#10;fix: cancellation" />
     <MESSAGE value="commit before passing lab" />
     <MESSAGE value="fix warnings" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix warnings" />
+    <MESSAGE value="add repos" />
+    <option name="LAST_COMMIT_MESSAGE" value="add repos" />
   </component>
 </project>

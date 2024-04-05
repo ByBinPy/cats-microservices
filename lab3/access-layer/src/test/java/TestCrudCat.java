@@ -1,14 +1,13 @@
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Query;
-import org.example.implementations.dao.CatDaoImpl;
+import jakarta.persistence.*;
+import org.example.declarations.CatDao;
 import org.example.implementations.entities.Cat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,12 +23,13 @@ public class TestCrudCat {
     @Mock
     private EntityTransaction mockTransaction;
 
-    private CatDaoImpl CatDao;
+    @Mock
+    private CatDao catDao;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        CatDao = new CatDaoImpl(Cat.class, entityManagerFactory);
+
     }
 
     @Test
@@ -39,7 +39,7 @@ public class TestCrudCat {
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
         when(entityManager.getTransaction()).thenReturn(mockTransaction);
 
-        CatDao.saveOrUpdate(Cat);
+        catDao.save(Cat);
 
         verify(entityManagerFactory).createEntityManager();
         verify(entityManager, times(2)).getTransaction();
@@ -56,7 +56,7 @@ public class TestCrudCat {
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
         when(entityManager.find(Cat.class, 1L)).thenReturn(Cat);
 
-        Cat result = CatDao.getById(1);
+        Cat result = catDao.findById(1).get();
 
         verify(entityManagerFactory).createEntityManager();
         verify(entityManager).find(Cat.class, 1L);
@@ -74,7 +74,7 @@ public class TestCrudCat {
         when(entityManager.createQuery("FROM " + clazz.getName())).thenReturn(mockQuery);
         when(mockQuery.getResultList()).thenReturn(Cats);
 
-        List<Cat> result = CatDao.findAll();
+        List<Cat> result = catDao.findAll();
 
         verify(entityManagerFactory).createEntityManager();
         verify(mockQuery).getResultList();
@@ -93,7 +93,7 @@ public class TestCrudCat {
         when(entityManager.createQuery("FROM " + clazz.getName())).thenReturn(mockQuery);
         when(mockQuery.getResultList()).thenReturn(Cats);
 
-        Long count = CatDao.getCount();
+        Long count = catDao.count();
 
         verify(entityManagerFactory).createEntityManager();
         verify(entityManager).createQuery("FROM " + clazz.getName());
@@ -103,35 +103,11 @@ public class TestCrudCat {
         assertEquals(2L, count);
     }
     @Test
-    void getItemsCats() {
-        List<Cat> Cats = List.of(new Cat(), new Cat());
-        Query mockQuery = mock(Query.class);
-        Class<?> clazz = Cat.class;
-        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
-        when(entityManager.createQuery("FROM " + clazz.getName())).thenReturn(mockQuery);
-        when(mockQuery.getResultList()).thenReturn(Cats);
-        when(mockQuery.setFirstResult(0)).thenReturn(mockQuery);
-        when(mockQuery.setMaxResults(10)).thenReturn(mockQuery);
-
-        List<Cat> result = CatDao.getItems(0, 10);
-
-        verify(entityManagerFactory).createEntityManager();
-        verify(entityManager).createQuery("FROM " + clazz.getName());
-        verify(mockQuery).getResultList();
-        verify(mockQuery).setFirstResult(0);
-        verify(mockQuery).setMaxResults(10);
-        verify(mockQuery).getResultList();
-        verify(entityManager).close();
-
-        assertEquals(Cats, result);
-    }
-
-    @Test
     void deleteCat() {
         Cat Cat = new Cat();
 
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
-        CatDao.delete(Cat);
+        catDao.delete(Cat);
 
         verify(entityManagerFactory).createEntityManager();
         verify(entityManager).remove(Cat);
