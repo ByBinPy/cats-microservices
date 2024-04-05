@@ -2,7 +2,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
-import org.example.implementations.dao.OwnerDaoImpl;
+import org.example.declarations.OwnerDao;
 import org.example.implementations.entities.Owner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,12 +24,12 @@ public class TestCrudOwner {
     @Mock
     private EntityTransaction mockTransaction;
 
-    private OwnerDaoImpl ownerDao;
+    @Mock
+    private OwnerDao ownerDao;
 
     @BeforeEach
-    void setUp() {
+    public void init(){
         MockitoAnnotations.openMocks(this);
-        ownerDao = new OwnerDaoImpl(Owner.class, entityManagerFactory);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class TestCrudOwner {
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
         when(entityManager.getTransaction()).thenReturn(mockTransaction);
 
-        ownerDao.saveOrUpdate(owner);
+        ownerDao.save(owner);
 
         verify(entityManagerFactory).createEntityManager();
         verify(entityManager, times(2)).getTransaction();
@@ -93,7 +93,7 @@ public class TestCrudOwner {
         when(entityManager.createQuery("FROM " + clazz.getName())).thenReturn(mockQuery);
         when(mockQuery.getResultList()).thenReturn(owners);
 
-        Long count = ownerDao.getCount();
+        Long count = ownerDao.count();
 
         verify(entityManagerFactory).createEntityManager();
         verify(entityManager).createQuery("FROM " + clazz.getName());
@@ -101,29 +101,6 @@ public class TestCrudOwner {
         verify(entityManager).close();
 
         assertEquals(2L, count);
-    }
-    @Test
-    void getItemsOwners() {
-        List<Owner> owners = List.of(new Owner(), new Owner());
-        Query mockQuery = mock(Query.class);
-        Class<?> clazz = Owner.class;
-        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
-        when(entityManager.createQuery("FROM " + clazz.getName())).thenReturn(mockQuery);
-        when(mockQuery.getResultList()).thenReturn(owners);
-        when(mockQuery.setFirstResult(0)).thenReturn(mockQuery);
-        when(mockQuery.setMaxResults(10)).thenReturn(mockQuery);
-
-        List<Owner> result = ownerDao.getItems(0, 10);
-
-        verify(entityManagerFactory).createEntityManager();
-        verify(entityManager).createQuery("FROM " + clazz.getName());
-        verify(mockQuery).getResultList();
-        verify(mockQuery).setFirstResult(0);
-        verify(mockQuery).setMaxResults(10);
-        verify(mockQuery).getResultList();
-        verify(entityManager).close();
-
-        assertEquals(owners, result);
     }
 
     @Test

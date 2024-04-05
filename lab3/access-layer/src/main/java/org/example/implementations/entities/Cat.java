@@ -1,6 +1,6 @@
 package org.example.implementations.entities;
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -14,8 +14,8 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@Component
 @Table(schema = "cats_db", name = "cats")
+@AllArgsConstructor
 public class Cat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,20 +44,6 @@ public class Cat {
             joinColumns=  @JoinColumn(name="cat_id", referencedColumnName="id"),
             inverseJoinColumns= @JoinColumn(name="friend_id", referencedColumnName="id"))
     private Set<Cat> friends;
-
-    @Autowired
-    public Cat(@NonNull String name,
-               @NonNull LocalDate dateOfBirth,
-               String breed,
-               Colors color,
-               @NonNull Owner owner,
-               Set<Long> friends) {
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.breed = breed;
-        this.color = color;
-        this.owner = owner;
-    }
     public Cat() {
 
     }
