@@ -8,6 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+              <option value="$PROJECT_DIR$/access-layer" />
+              <option value="$PROJECT_DIR$/controller" />
+              <option value="$PROJECT_DIR$/service" />
           </set>
         </option>
       </GradleProjectSettings>
