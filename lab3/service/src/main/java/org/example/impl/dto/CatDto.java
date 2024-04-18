@@ -15,6 +15,6 @@ public class CatDto {
     private LocalDate dateOfBirth;
     private String breed;
     private Colors color;
-    private Owner owner;
+    private Integer ownerId;
     private Set<Cat> friends;
 }

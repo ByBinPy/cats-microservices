@@ -1,6 +1,7 @@
 package org.example.impl.services;
 
 import org.example.declarations.CatDao;
+import org.example.declarations.OwnerDao;
 import org.example.exceptions.SaveExistCat;
 import org.example.exceptions.SaveExistOwner;
 import org.example.exceptions.UnknownCat;
@@ -20,10 +21,12 @@ import java.util.Optional;
 public class CatService {
 
     CatDao catDao;
+    OwnerDao ownerDao;
 
     @Autowired
-    public CatService(CatDao catDao) {
+    public CatService(CatDao catDao, OwnerDao ownerDao) {
         this.catDao = catDao;
+        this.ownerDao = ownerDao;
     }
 
     public CatDto getById(Integer id) throws UnknownCat {
@@ -32,40 +35,13 @@ public class CatService {
             throw new UnknownCat();
         }
         Cat cat = catOpt.get();
-        CatDto catDto = new CatDto();
-        catDto.setId(cat.getId());
-        catDto.setName(cat.getName());
-        catDto.setDateOfBirth(cat.getDateOfBirth());
-        catDto.setOwner(cat.getOwner());
-        catDto.setBreed(cat.getBreed());
-        catDto.setColor(cat.getColor());
-        return catDto;
+        return convertCatToDto(cat);
     }
     public ResponseEntity<?> save(CatDto catDto) {
         if (catDao.findById(catDto.getId()).isPresent())
             return new ResponseEntity<>(new SaveExistCat(), HttpStatus.NOT_ACCEPTABLE);
 
-        Cat cat = new Cat();
-        cat.setName(catDto.getName());
-        cat.setId(catDto.getId());
-        cat.setDateOfBirth(catDto.getDateOfBirth());
-        cat.setColor(catDto.getColor());
-        cat.setOwner(catDto.getOwner());
-        cat.setBreed(catDto.getBreed());
-        cat.setFriends(catDto.getFriends());
-
-
-        Cat catSaved = catDao.save(cat);
-
-        catDto.setId(catSaved.getId());
-        catDto.setName(catSaved.getName());
-        catDto.setDateOfBirth(catSaved.getDateOfBirth());
-        catDto.setColor(catSaved.getColor());
-        catDto.setOwner(catSaved.getOwner());
-        catDto.setBreed(catSaved.getBreed());
-        catDto.setFriends(catSaved.getFriends());
-
-        return new ResponseEntity<>(catDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(convertCatToDto(catDao.save(convertDtoToCat(catDto))), HttpStatus.CREATED);
     }
     public void delete(Integer id){
         catDao.deleteById(id);
@@ -75,16 +51,28 @@ public class CatService {
         if (catDao.findById(id).isEmpty())
             return new ResponseEntity<>(new UnknownCat(), HttpStatus.NOT_FOUND);
 
+        return new ResponseEntity<>( catDao.save(convertDtoToCat(newCat)), HttpStatus.ACCEPTED);
+    }
+    private Cat convertDtoToCat(CatDto catDto){
         Cat cat = new Cat();
-        cat.setName(newCat.getName());
-        cat.setId(newCat.getId());
-        cat.setDateOfBirth(newCat.getDateOfBirth());
-        cat.setColor(newCat.getColor());
-        cat.setOwner(newCat.getOwner());
-        cat.setBreed(newCat.getBreed());
-        cat.setFriends(newCat.getFriends());
-        catDao.save(cat);
-
-        return new ResponseEntity<>(newCat, HttpStatus.ACCEPTED);
+        cat.setName(catDto.getName());
+        cat.setId(catDto.getId());
+        cat.setDateOfBirth(catDto.getDateOfBirth());
+        cat.setColor(catDto.getColor());
+        cat.setOwner(ownerDao.findById(catDto.getOwnerId()).get());
+        cat.setBreed(catDto.getBreed());
+        cat.setFriends(catDto.getFriends());
+        return cat;
+    }
+    private CatDto convertCatToDto(Cat cat) {
+        CatDto catDto = new CatDto();
+        catDto.setId(cat.getId());
+        catDto.setName(cat.getName());
+        catDto.setDateOfBirth(cat.getDateOfBirth());
+        catDto.setColor(cat.getColor());
+        catDto.setOwnerId(cat.getOwner().getId());
+        catDto.setBreed(cat.getBreed());
+        catDto.setFriends(cat.getFriends());
+        return catDto;
     }
 }
