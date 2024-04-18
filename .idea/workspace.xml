@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="fix CatService">
-      <change beforePath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/dto/OwnerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/dto/OwnerDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/services/OwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/services/OwnerService.java" afterDir="false" />
+    <list default="true" id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="add dir">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/controller/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/controller/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +114,7 @@
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "settings.editor.selected.configurable": "build.tools",
     "spring.configuration.checksum": "5a29492979683ca8499da54279325930"
   },
   "keyToStringList": {
@@ -156,8 +156,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="lab3 [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Spring Boot.Application (1)">
+    <configuration name="lab3 [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/lab3" />
@@ -168,7 +168,70 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="dependencies" />
+            <option value="bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="lab3 [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/lab3" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="lab3 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/lab3" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="lab3 [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/lab3" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -211,55 +274,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RunApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="tech-labs.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.RunApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="database_conf/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="lab3/access-layer/database_conf/docker-compose.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="database_conf/docker-compose.yaml.cat_db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="cat_db" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="lab3/access-layer/database_conf/docker-compose.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Docker.database_conf/docker-compose.yaml.cat_db: Compose Deployment" />
-      <item itemvalue="Docker.database_conf/docker-compose.yaml: Compose Deployment" />
-      <item itemvalue="Gradle.lab3 [dependencies]" />
+      <item itemvalue="Gradle.lab3 [bootJar]" />
+      <item itemvalue="Gradle.lab3 [bootRun]" />
+      <item itemvalue="Gradle.lab3 [build]" />
+      <item itemvalue="Gradle.lab3 [clean]" />
       <item itemvalue="Spring Boot.Application" />
       <item itemvalue="Spring Boot.Application (1)" />
-      <item itemvalue="Spring Boot.RunApplication (1)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.Application (1)" />
-        <item itemvalue="Spring Boot.RunApplication (1)" />
-        <item itemvalue="Docker.database_conf/docker-compose.yaml.cat_db: Compose Deployment" />
-        <item itemvalue="Docker.database_conf/docker-compose.yaml: Compose Deployment" />
-        <item itemvalue="Gradle.lab3 [dependencies]" />
+        <item itemvalue="Gradle.lab3 [clean]" />
+        <item itemvalue="Gradle.lab3 [bootRun]" />
+        <item itemvalue="Gradle.lab3 [build]" />
+        <item itemvalue="Gradle.lab3 [bootJar]" />
       </list>
     </recent_temporary>
   </component>
@@ -418,7 +447,21 @@
       <option name="project" value="LOCAL" />
       <updated>1713451843688</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix OwnerService">
+      <created>1713452255037</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1713452255037</updated>
+    </task>
+    <task id="LOCAL-00019" summary="add dir">
+      <created>1713452297108</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1713452297108</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,6 +580,19 @@
     <MESSAGE value="add repos" />
     <MESSAGE value="add cat controller and service" />
     <MESSAGE value="fix CatService" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix CatService" />
+    <MESSAGE value="fix OwnerService" />
+    <MESSAGE value="add dir" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dir" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/lab3/controller/src/main/java/org/example/Application.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
