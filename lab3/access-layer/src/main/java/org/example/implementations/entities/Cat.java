@@ -6,6 +6,8 @@ import lombok.NonNull;
 import lombok.Setter;
 import org.example.implementations.Colors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -41,20 +43,6 @@ public class Cat {
             joinColumns=  @JoinColumn(name="cat_id", referencedColumnName="id"),
             inverseJoinColumns= @JoinColumn(name="friend_id", referencedColumnName="id"))
     private Set<Cat> friends;
-
-    @Autowired
-    public Cat(@NonNull String name,
-               @NonNull LocalDate dateOfBirth,
-               String breed,
-               Colors color,
-               @NonNull Owner owner,
-               Set<Long> friends) {
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.breed = breed;
-        this.color = color;
-        this.owner = owner;
-    }
     public Cat() {
 
     }

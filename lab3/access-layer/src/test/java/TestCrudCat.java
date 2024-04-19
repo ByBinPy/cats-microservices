@@ -51,12 +51,12 @@ public class TestCrudCat {
     @Test
     void getByIdCat() {
         Cat Cat = new Cat();
-        Cat.setId(1L);
+        Cat.setId(1);
 
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
         when(entityManager.find(Cat.class, 1L)).thenReturn(Cat);
 
-        Cat result = CatDao.getById(1);
+        Cat result = CatDao.findById(1);
 
         verify(entityManagerFactory).createEntityManager();
         verify(entityManager).find(Cat.class, 1L);

@@ -21,5 +21,24 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="tech-labs.service.test/Hibernate" uuid="da42b05d-fba5-4a42-8020-5cb36d5b3447">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
+      <user-name>root</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="tech-labs.access-layer.test/Hibernate" uuid="9c2ec201-1da9-4119-9346-5d400042a19b">
+      <database-info product="PostgreSQL" version="16.1 (Debian 16.1-1.pgdg120+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="16.1" exact-driver-version="42.6">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>root</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
   </component>
 </project>

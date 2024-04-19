@@ -31,13 +31,6 @@ public class Owner {
     @JoinColumn(name = "owner_id")
     List<Cat> cats;
 
-    @Autowired
-    public Owner(String name, LocalDate dateOfBirth, List<Cat> cats) {
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.cats = cats;
-    }
-
     public Owner() {
 
     }

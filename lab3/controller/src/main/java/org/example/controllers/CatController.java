@@ -2,7 +2,6 @@ package org.example.controllers;
 
 import org.example.exceptions.UnknownCat;
 import org.example.impl.dto.CatDto;
-import org.example.impl.dto.OwnerDto;
 import org.example.impl.services.CatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
