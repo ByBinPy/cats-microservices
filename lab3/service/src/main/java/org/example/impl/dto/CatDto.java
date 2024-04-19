@@ -1,11 +1,10 @@
 package org.example.impl.dto;
 
 import lombok.Data;
-import org.example.implementations.entities.Cat;
-import org.example.implementations.entities.Owner;
 import org.example.implementations.Colors;
+import org.example.implementations.entities.Cat;
+
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 @Data

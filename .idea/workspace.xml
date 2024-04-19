@@ -4,16 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="after rebasing" />
+    <list default="true" id="990d17fb-268c-4fe4-bae7-bab176adfa58" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_2024_13_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_2024_13_46__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_2024_13_53__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_2024_13_53__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_04_2024_17_42__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_04_2024_17_42__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/src/main/java/org/example/implementations/entities/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/controller/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/controller/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/dto/CatDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/service/src/main/java/org/example/impl/dto/CatDto.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
     <projectState path="$PROJECT_DIR$/lab3">
       <ProjectState />
     </projectState>
@@ -21,12 +29,6 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <task path="$PROJECT_DIR$/lab3/access-layer">
-          <activation />
-        </task>
         <task path="$PROJECT_DIR$/lab3">
           <activation />
         </task>
@@ -46,12 +48,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="tech-labs" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="tech-labs" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
@@ -61,103 +57,38 @@
       </state>
     </system>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="AnnotationType" />
-        <option value="Interface" />
-        <option value="JUnit5 Test Class" />
-        <option value="Record" />
-        <option value="Enum" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Rebase.Settings">
-    <option name="NEW_BASE" value="master" />
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lab2" />
+        <entry key="$PROJECT_DIR$" value="lab3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2cjTpNBT9kTSmvQ1uWnhkZEYeHo" />
+  <component name="ProjectId" id="2fJPUQaNwXxATszNCWlSdVqLBcG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/AppData/Roaming/JetBrains/IntelliJIdea2022.2/scratches/ByBinPy&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;5a29492979683ca8499da54279325930&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\User\AppData\Roaming\JetBrains\IntelliJIdea2022.2\scratches\lab1\src\main\java\org\example" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\User\AppData\Roaming\JetBrains\IntelliJIdea2022.2\scratches\ByBinPy\src\" />
-    </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="org.example" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="org.example.declarations" />
-      <recent name="org.example.Declarations" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="org.example.imp.accounts" />
-    </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="gradle access-layer:build" />
-    </option>
-  </component>
-  <component name="RunDashboard">
-    <option name="configurationTypes">
-      <set>
-        <option value="SpringBootApplicationConfigurationType" />
-      </set>
-    </option>
-  </component>
-  <component name="RunManager" selected="Spring Boot.Application (1)">
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="lab3 [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -242,19 +173,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="ByBinPy.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="ByBinPy.main" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="tech-labs.controller.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Application" />
@@ -270,206 +188,31 @@
     </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="tech-labs.controller.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Application" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Application" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Gradle.lab3 [bootJar]" />
-      <item itemvalue="Gradle.lab3 [bootRun]" />
-      <item itemvalue="Gradle.lab3 [build]" />
-      <item itemvalue="Gradle.lab3 [clean]" />
-      <item itemvalue="Spring Boot.Application" />
-      <item itemvalue="Spring Boot.Application (1)" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.Application (1)" />
         <item itemvalue="Gradle.lab3 [clean]" />
-        <item itemvalue="Gradle.lab3 [bootRun]" />
+        <item itemvalue="Spring Boot.Application (1)" />
         <item itemvalue="Gradle.lab3 [build]" />
+        <item itemvalue="Gradle.lab3 [bootRun]" />
         <item itemvalue="Gradle.lab3 [bootJar]" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SpringBeansView">
-    <option name="showFiles" value="false" />
-    <option name="showImplicitBeans" value="false" />
-  </component>
-  <component name="SpringMvcView">
-    <option name="showControllers" value="false" />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="89dad17c-dd13-46ff-989f-d82fd8ab82f6" name="Changes" comment="add lab2" />
-      <created>1708624260342</created>
+      <changelist id="990d17fb-268c-4fe4-bae7-bab176adfa58" name="Changes" comment="" />
+      <created>1713516222646</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1708624260342</updated>
-      <workItem from="1708624261516" duration="6865000" />
-      <workItem from="1708857516175" duration="23923000" />
-      <workItem from="1709041429705" duration="5996000" />
-      <workItem from="1709143398501" duration="380000" />
-      <workItem from="1709293436966" duration="2000" />
-      <workItem from="1709307609265" duration="8285000" />
-      <workItem from="1709469658873" duration="1199000" />
-      <workItem from="1709490893832" duration="676000" />
-      <workItem from="1709666495883" duration="104000" />
-      <workItem from="1709666782807" duration="29025000" />
-      <workItem from="1709756536151" duration="2251000" />
-      <workItem from="1709902838857" duration="54000" />
-      <workItem from="1709920507119" duration="7781000" />
-      <workItem from="1710504634945" duration="65000" />
-      <workItem from="1712061197844" duration="285000" />
-      <workItem from="1712061495849" duration="44000" />
-      <workItem from="1712062535402" duration="470000" />
-      <workItem from="1712240371568" duration="3248000" />
-      <workItem from="1712301345774" duration="18345000" />
-      <workItem from="1712352765279" duration="144000" />
+      <updated>1713516222646</updated>
+      <workItem from="1713516224016" duration="4669000" />
     </task>
-    <task id="LOCAL-00001" summary="wrote special exceptions and logic for transfer">
-      <created>1708870655403</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1708870655403</updated>
-    </task>
-    <task id="LOCAL-00002" summary="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException">
-      <created>1708886179685</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1708886179685</updated>
-    </task>
-    <task id="LOCAL-00003" summary="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException&#10;add: personal Exceptions&#10;feature: cancellation operation&#10;edit: find* operations">
-      <created>1709045754704</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1709045754704</updated>
-    </task>
-    <task id="LOCAL-00004" summary="add: subscribe">
-      <created>1709116294173</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1709116294173</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fix: change directories and add interfaces">
-      <created>1709313961160</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1709313961160</updated>
-    </task>
-    <task id="LOCAL-00006" summary="commit: the MVP">
-      <created>1709660602045</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1709660602045</updated>
-    </task>
-    <task id="LOCAL-00007" summary="add: add javadoc">
-      <created>1709663320428</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1709663320428</updated>
-    </task>
-    <task id="LOCAL-00008" summary="add: add javadoc">
-      <created>1709663331903</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1709663331903</updated>
-    </task>
-    <task id="LOCAL-00009" summary="add: folder records&#10;fix: change time in Transaction">
-      <created>1709663740947</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1709663740947</updated>
-    </task>
-    <task id="LOCAL-00010" summary="add: tests&#10;fix: cancellation">
-      <created>1709756563572</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1709756563572</updated>
-    </task>
-    <task id="LOCAL-00011" summary="add: tests&#10;fix: cancellation">
-      <created>1709756832929</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1709756832929</updated>
-    </task>
-    <task id="LOCAL-00012" summary="commit before passing lab">
-      <created>1709921584511</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1709921584511</updated>
-    </task>
-    <task id="LOCAL-00013" summary="fix warnings">
-      <created>1709926227321</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1709926227321</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fix warnings">
-      <created>1712064418867</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1712064418867</updated>
-    </task>
-    <task id="LOCAL-00015" summary="add repos">
-      <created>1712242002546</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1712242002546</updated>
-    </task>
-    <task id="LOCAL-00016" summary="add cat controller and service">
-      <created>1712352860114</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1712352860114</updated>
-    </task>
-    <task id="LOCAL-00017" summary="fix CatService">
-      <created>1713451843688</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1713451843688</updated>
-    </task>
-    <task id="LOCAL-00018" summary="fix OwnerService">
-      <created>1713452255037</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1713452255037</updated>
-    </task>
-    <task id="LOCAL-00019" summary="add dir">
-      <created>1713452297108</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1713452297108</updated>
-    </task>
-    <task id="LOCAL-00020" summary="after rebasing">
-      <created>1713511838667</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1713511838667</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,125 +226,7 @@
             <State />
           </value>
         </entry>
-        <entry key="c6dffaef-bad0-421c-a1c3-c54ff6660bfc">
-          <value>
-            <State>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="HEAD" />
-                      </list>
-                    </value>
-                  </entry>
-                  <entry key="structure">
-                    <value>
-                      <list>
-                        <option value="dir:C:/Users/User/AppData/Roaming/JetBrains/IntelliJIdea2022.2/scratches/ByBinPy/lab3/service" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-        <entry key="d0b92acb-a6f9-47f2-8262-baa8af022cef">
-          <value>
-            <State>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="lab1" />
-                      </list>
-                    </value>
-                  </entry>
-                  <entry key="roots">
-                    <value>
-                      <list>
-                        <option value="$PROJECT_DIR$" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-        <entry key="e97a47b4-e94e-4481-82da-234dd3abd7c4">
-          <value>
-            <State />
-          </value>
-        </entry>
       </map>
     </option>
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="c6dffaef-bad0-421c-a1c3-c54ff6660bfc" value="TOOL_WINDOW" />
-        <entry key="d0b92acb-a6f9-47f2-8262-baa8af022cef" value="TOOL_WINDOW" />
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="lab1" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="origin/master" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="master" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="wrote special exceptions and logic for transfer" />
-    <MESSAGE value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException" />
-    <MESSAGE value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException&#10;add: personal Exceptions&#10;feature: cancellation operation&#10;edit: find* operations" />
-    <MESSAGE value="add: subscribe" />
-    <MESSAGE value="fix: change directories and add interfaces" />
-    <MESSAGE value="commit: the MVP" />
-    <MESSAGE value="add: add javadoc" />
-    <MESSAGE value="add: folder records&#10;fix: change time in Transaction" />
-    <MESSAGE value="add: tests&#10;fix: cancellation" />
-    <MESSAGE value="commit before passing lab" />
-    <MESSAGE value="fix warnings" />
-    <MESSAGE value="add repos" />
-    <MESSAGE value="add cat controller and service" />
-    <MESSAGE value="fix CatService" />
-    <MESSAGE value="fix OwnerService" />
-    <MESSAGE value="add dir" />
-    <MESSAGE value="after rebasing" />
-    <option name="LAST_COMMIT_MESSAGE" value="after rebasing" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/lab3/controller/src/main/java/org/example/Application.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

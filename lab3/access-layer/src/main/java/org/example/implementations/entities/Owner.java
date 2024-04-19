@@ -1,6 +1,7 @@
 package org.example.implementations.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Entity
 @Setter
+@Getter
 @Table(schema = "cats_db", name = "owners")
 @Component
 public class Owner {

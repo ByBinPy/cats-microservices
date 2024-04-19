@@ -19,11 +19,9 @@ import java.util.Set;
 public class Cat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NonNull
+    private Integer id;
     @Column
     private String name;
-    @NonNull
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
     @Column
@@ -31,7 +29,6 @@ public class Cat {
     @Enumerated(EnumType.ORDINAL)
     @Column(columnDefinition = "colors")
     private Colors color;
-    @NonNull
     @Setter
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "owner_id", nullable = false)
