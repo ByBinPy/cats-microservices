@@ -3,11 +3,9 @@ package org.example.implementations.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.example.implementations.Roles;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,8 +19,15 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @Column
+    @Column(nullable = false)
     String name;
+
+    @Column(nullable = false)
+    String password;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    Roles role;
 
     @Column(name = "date_of_birth")
     LocalDate dateOfBirth;
