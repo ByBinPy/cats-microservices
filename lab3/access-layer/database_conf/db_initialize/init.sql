@@ -3,6 +3,8 @@ CREATE TABLE cats_db.owners
 (
     id serial primary key,
     name varchar not null,
+    password varchar not null,
+    role int not null,
     date_of_birth date not null
 );
 CREATE TABLE cats_db.cats
@@ -10,7 +12,7 @@ CREATE TABLE cats_db.cats
     id serial primary key,
     name varchar not null,
     date_of_birth date not null,
-    breed varchar,
+    breed int,
     color int,
     owner_id bigint not null references cats_db.owners (id)
 );

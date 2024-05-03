@@ -10,4 +10,4 @@ services:
       POSTGRES_PASSWORD: "12345"
       POSTGRES_DB: "pdb"
     volumes:
-      - C:\Users\User\AppData\Roaming\JetBrains\IntelliJIdea2022.2\scratches\tech-labs\access-layer\database_conf\db_initialize:/docker-entrypoint-initdb.d
+      - C:\Users\User\AppData\Roaming\JetBrains\IntelliJIdea2022.2\scratches\lab4\ByBinPy\lab3\access-layer\database_conf\db_initialize\ :/docker-entrypoint-initdb.d
