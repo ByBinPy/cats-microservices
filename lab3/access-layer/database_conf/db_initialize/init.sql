@@ -13,7 +13,7 @@ CREATE TABLE cats_db.cats
     name varchar not null,
     date_of_birth date not null,
     breed int,
-    color int,
+    color smallint,
     owner_id bigint not null references cats_db.owners (id)
 );
 CREATE TABLE cats_db.friends

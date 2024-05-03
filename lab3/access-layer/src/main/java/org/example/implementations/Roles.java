@@ -19,6 +19,4 @@ public enum Roles {
                 .map(permission -> new SimpleGrantedAuthority(permission.name()))
                 .collect(Collectors.toList());
     }
-
-
 }

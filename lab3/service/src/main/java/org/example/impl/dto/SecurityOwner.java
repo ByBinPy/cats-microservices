@@ -1,5 +1,6 @@
 package org.example.impl.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.example.implementations.entities.Owner;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
 public class SecurityOwner implements UserDetails {
     private final String name;
     private final String password;
@@ -19,7 +21,7 @@ public class SecurityOwner implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return name;
     }
 
     @Override
@@ -49,11 +51,11 @@ public class SecurityOwner implements UserDetails {
 
 
     public static UserDetails convertOwnerToUserDetails(Owner owner) {
-        return new org.springframework.security.core.userdetails.User(
+        return new SecurityOwner(
                 owner.getName(),
                 owner.getPassword(),
-                owner.getRole().getAuthorities()
-        );
+                owner.getRole().getAuthorities(),
+                true);
     }
 }
 

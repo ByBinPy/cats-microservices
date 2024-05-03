@@ -25,7 +25,7 @@ public class Cat {
     @Column
     private String breed;
     @Enumerated(EnumType.ORDINAL)
-    @Column(columnDefinition = "colors")
+    @Column(columnDefinition = "color")
     private Colors color;
     @Setter
     @ManyToOne(cascade = CascadeType.MERGE)
