@@ -16,22 +16,22 @@ public class OwnerController {
     public OwnerController(OwnerService ownerService) {
         this.ownerService = ownerService;
     }
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('READ')")
     @GetMapping("/find")
     public ResponseEntity<?> getCatById(@RequestParam Integer ownerId) {
         return ownerService.getById(ownerId);
     }
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
     @PostMapping("/save")
     public ResponseEntity<?> saveOwner(@RequestBody OwnerDto ownerDto) {
         return ownerService.save(ownerDto);
     }
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
     @DeleteMapping("/delete/{id}")
     public void deleteOwner(@PathVariable("id") Integer ownerId) {
         ownerService.delete(ownerId);
     }
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateOwner(@PathVariable("id") Integer id, @RequestBody OwnerDto ownerDto){
         return ownerService.update(id, ownerDto);

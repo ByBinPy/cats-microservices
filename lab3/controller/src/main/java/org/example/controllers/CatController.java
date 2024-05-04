@@ -1,18 +1,18 @@
 package org.example.controllers;
 
-import org.example.exceptions.UnknownCat;
 import org.example.impl.dto.CatDto;
+import org.example.impl.dto.SecurityOwner;
 import org.example.impl.services.CatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cat")
 public class CatController {
     private final CatService catService;
-
     @Autowired
     public CatController(CatService catService) {
         this.catService = catService;
@@ -20,14 +20,15 @@ public class CatController {
 
     @PreAuthorize("hasAuthority('READ')")
     @GetMapping("/find")
-    public CatDto getCatById(@RequestParam Integer catId) throws UnknownCat {
-        return catService.getById(catId);
+    public ResponseEntity<?> getCatById(@RequestParam Integer catId, @AuthenticationPrincipal SecurityOwner securityOwner) {
+        return catService.getById(catId, securityOwner.getId());
     }
 
     @PreAuthorize("hasAuthority('READ')")
     @GetMapping("/filter/color")
-    public ResponseEntity<?> getCatsByColor(@RequestParam String color) {
-        return catService.getByColor(color);
+    public ResponseEntity<?> getCatsByColor(@RequestParam String color, @AuthenticationPrincipal SecurityOwner securityOwner) {
+
+        return catService.getByColor(color, securityOwner.getId());
     }
     @PreAuthorize("hasAuthority('WRITE')")
     @PostMapping("/save")

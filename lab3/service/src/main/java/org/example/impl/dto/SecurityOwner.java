@@ -15,6 +15,7 @@ import java.util.List;
 public class SecurityOwner implements UserDetails {
     private final String name;
     private final String password;
+    private final Integer id;
     private final List<SimpleGrantedAuthority> authorities;
     private final boolean isValid;
 
@@ -54,6 +55,7 @@ public class SecurityOwner implements UserDetails {
         return new SecurityOwner(
                 owner.getName(),
                 owner.getPassword(),
+                owner.getId(),
                 owner.getRole().getAuthorities(),
                 true);
     }
