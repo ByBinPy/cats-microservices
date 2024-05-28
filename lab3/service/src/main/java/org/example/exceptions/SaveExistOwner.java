@@ -1,9 +1,10 @@
 package org.example.exceptions;
 
-public class SaveExistOwner extends Exception{
-    public SaveExistOwner(){
+public class SaveExistOwner extends Exception {
+    public SaveExistOwner() {
     }
-    public  SaveExistOwner(String message) {
+
+    public SaveExistOwner(String message) {
         super(message);
     }
 }

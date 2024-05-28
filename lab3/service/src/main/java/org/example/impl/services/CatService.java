@@ -3,6 +3,8 @@ package org.example.impl.services;
 import org.example.declarations.CatDao;
 import org.example.declarations.OwnerDao;
 import org.example.exceptions.SaveExistCat;
+import org.example.exceptions.UnknownCat;
+import org.example.exceptions.UnknownColor;
 import org.example.impl.dto.CatDto;
 import org.example.implementations.Colors;
 import org.example.implementations.entities.Cat;
@@ -20,8 +22,8 @@ import java.util.stream.Collectors;
 @Service
 public class CatService {
 
-    CatDao catDao;
-    OwnerDao ownerDao;
+    private final CatDao catDao;
+    private final OwnerDao ownerDao;
 
     @Autowired
     public CatService(CatDao catDao, OwnerDao ownerDao) {
@@ -29,17 +31,17 @@ public class CatService {
         this.ownerDao = ownerDao;
     }
 
-    public ResponseEntity<?> getById(Integer id, Integer ownerId) {
+    public ResponseEntity<?> getById(Integer id, Integer ownerId) throws UnknownCat {
         Optional<Cat> catOpt = catDao.findById(id).filter(cat -> cat.getOwner().getId().equals(ownerId));
         if (catOpt.isEmpty()) {
-            return new ResponseEntity<>("unknown cat", HttpStatus.OK);
+            throw new UnknownCat("try find unknown cat");
         }
         return new ResponseEntity<>(convertCatToDto(catOpt.get()), HttpStatus.OK);
     }
 
-    public ResponseEntity<?> save(CatDto catDto) {
+    public ResponseEntity<?> save(CatDto catDto) throws SaveExistCat {
         if (catDao.findById(catDto.getId()).isPresent())
-            return new ResponseEntity<>(new SaveExistCat(), HttpStatus.NOT_ACCEPTABLE);
+            throw new SaveExistCat();
 
         return new ResponseEntity<>(convertCatToDto(catDao.save(convertDtoToCat(catDto))), HttpStatus.CREATED);
     }
@@ -48,12 +50,12 @@ public class CatService {
         catDao.deleteById(id);
     }
 
-    public ResponseEntity<?> getByColor(String color, Integer ownerId) {
+    public ResponseEntity<?> getByColor(String color, Integer ownerId) throws UnknownColor {
         Colors colorFind = Arrays.stream(Colors.values()).filter(col -> col.name().equals(color)).collect(Collectors.toList()).getLast();
 
         if (colorFind == null)
 
-            return new ResponseEntity<>("unknown cat", HttpStatus.NOT_FOUND);
+            throw new UnknownColor("try find cat with unknown color");
 
         List<Cat> cats = catDao.findCatsByColor(colorFind)
                 .stream()
@@ -62,13 +64,13 @@ public class CatService {
 
         if (cats.isEmpty())
 
-            return new ResponseEntity<>("unknown cat", HttpStatus.NOT_FOUND);
+            throw new UnknownColor("try find cat with unknown color");
 
         return new ResponseEntity<>(cats.stream().map(this::convertCatToDto).collect(Collectors.toList()), HttpStatus.OK);
     }
-    public ResponseEntity<?> update(Integer id, CatDto newCat) {
+    public ResponseEntity<?> update(Integer id, CatDto newCat) throws UnknownCat {
         if (catDao.findById(id).isEmpty())
-            return new ResponseEntity<>("unknown cat", HttpStatus.NOT_FOUND);
+            throw new UnknownCat("try update unknown cat");
 
         return new ResponseEntity<>(catDao.save(convertDtoToCat(newCat)), HttpStatus.ACCEPTED);
     }

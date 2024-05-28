@@ -1,8 +1,11 @@
 package org.example.exceptions;
 
-public class UnknownCat extends RuntimeException {
+public class UnknownCat extends Exception {
     public UnknownCat() {
 
+    }
+    public UnknownCat(String message) {
+        super(message);
     }
 
 }

@@ -2,6 +2,8 @@ package org.example.impl.services;
 
 import org.example.declarations.CatDao;
 import org.example.declarations.OwnerDao;
+import org.example.exceptions.SaveExistOwner;
+import org.example.exceptions.UnknownOwner;
 import org.example.impl.dto.OwnerDto;
 import org.example.implementations.entities.Cat;
 import org.example.implementations.entities.Owner;
@@ -24,18 +26,18 @@ public class OwnerService {
         this.catDao = catDao;
     }
 
-    public ResponseEntity<?> getById(Integer id) {
+    public ResponseEntity<?> getById(Integer id) throws UnknownOwner {
         Optional<Owner> ownerOptional = ownerDao.findById(id);
         if (ownerOptional.isEmpty())
-            return new ResponseEntity<>("unknown owner", HttpStatus.NOT_FOUND);
+            throw new UnknownOwner("unknown owner");
 
         Owner owner = ownerOptional.get();
 
         return new ResponseEntity<>(convertOwnerToDto(owner), HttpStatus.OK);
     }
-    public ResponseEntity<?> save(OwnerDto ownerDto) {
+    public ResponseEntity<?> save(OwnerDto ownerDto) throws SaveExistOwner {
         if (ownerDao.findById(ownerDto.getId()).isPresent())
-            return new ResponseEntity<>("owner already exist", HttpStatus.NOT_ACCEPTABLE);
+            throw new SaveExistOwner();
 
         return new ResponseEntity<>(convertOwnerToDto(ownerDao.save(convertDtoToOwner(ownerDto))), HttpStatus.CREATED);
     }
@@ -43,9 +45,9 @@ public class OwnerService {
         ownerDao.deleteById(id);
     }
 
-    public ResponseEntity<?> update(Integer id, OwnerDto newOwner){
+    public ResponseEntity<?> update(Integer id, OwnerDto newOwner) throws UnknownOwner {
         if (ownerDao.findById(id).isEmpty())
-            return new ResponseEntity<>("unknown owner", HttpStatus.NOT_FOUND);
+            throw new UnknownOwner("try update unknown owner");
 
         return new ResponseEntity<>(ownerDao.save(convertDtoToOwner(newOwner)), HttpStatus.ACCEPTED);
     }

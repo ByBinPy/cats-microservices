@@ -8,10 +8,10 @@ import java.util.List;
 
 @Data
 public class OwnerDto {
-    Integer id;
-    String name;
-    String password;
-    Roles role;
-    LocalDate dateOfBirth;
-    List<Integer> catIds;
+    private Integer id;
+    private String name;
+    private String password;
+    private Roles role;
+    private LocalDate dateOfBirth;
+    private List<Integer> catIds;
 }
