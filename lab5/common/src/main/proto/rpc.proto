@@ -1,0 +1,24 @@
+syntax = "proto3";
+package itmo.tech.owner;
+enum Roles {
+  ADMIN = 0;
+  USER = 1;
+}
+message OwnerDto {
+  string name = 1;
+  string dateOfBirth = 2;
+  repeated int32 cats = 3;
+  string password = 4;
+  int32 id = 5;
+  Roles role = 6;
+}
+message OwnerId {
+  int32 id = 1;
+}
+message OwnerName {
+  string name = 1;
+}
+service OwnerService {
+  rpc findOwnerById (OwnerId) returns (OwnerDto);
+  rpc findOwnerByName (OwnerName) returns (OwnerDto);
+}

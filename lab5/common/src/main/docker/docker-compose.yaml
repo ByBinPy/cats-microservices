@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  cat_db:
+    image: postgres
+    ports:
+      - "6434:5432"
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "12345"
+      POSTGRES_DB: "pdb"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+  rabbitmq:
+    image: rabbitmq:3.10.7-management
+    hostname: rabbitmq
+    environment:
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit disk_free_limit 2147483648
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    ports:
+      - "15672:15672"
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq

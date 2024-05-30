@@ -1,5 +1,7 @@
 package org.example.controllers;
 
+import org.example.exceptions.SaveExistOwner;
+import org.example.exceptions.UnknownOwner;
 import org.example.impl.dto.OwnerDto;
 import org.example.impl.services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +20,12 @@ public class OwnerController {
     }
     @PreAuthorize("hasAuthority('READ')")
     @GetMapping("/find")
-    public ResponseEntity<?> getCatById(@RequestParam Integer ownerId) {
+    public ResponseEntity<?> getCatById(@RequestParam Integer ownerId) throws UnknownOwner {
         return ownerService.getById(ownerId);
     }
     @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
     @PostMapping("/save")
-    public ResponseEntity<?> saveOwner(@RequestBody OwnerDto ownerDto) {
+    public ResponseEntity<?> saveOwner(@RequestBody OwnerDto ownerDto) throws SaveExistOwner {
         return ownerService.save(ownerDto);
     }
     @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
@@ -33,7 +35,7 @@ public class OwnerController {
     }
     @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateOwner(@PathVariable("id") Integer id, @RequestBody OwnerDto ownerDto){
+    public ResponseEntity<?> updateOwner(@PathVariable("id") Integer id, @RequestBody OwnerDto ownerDto) throws UnknownOwner {
         return ownerService.update(id, ownerDto);
     }
 }
