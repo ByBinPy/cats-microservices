@@ -4,6 +4,10 @@ enum Roles {
   ADMIN = 0;
   USER = 1;
 }
+message SecurityColor {
+  string color = 1;
+  int32 ownerId = 2;
+}
 message OwnerDto {
   string name = 1;
   string dateOfBirth = 2;
@@ -12,13 +16,33 @@ message OwnerDto {
   int32 id = 5;
   Roles role = 6;
 }
-message OwnerId {
+message Id {
   int32 id = 1;
+}
+message SecurityId {
+  int32 catId = 1;
+  int32 ownerId = 2;
 }
 message OwnerName {
   string name = 1;
 }
+message CatDto {
+  int32 id = 1;
+  string name = 2;
+  string dateOfBirth = 3;
+  string breed = 4;
+  string color = 5;
+  int32 ownerId = 6;
+  repeated int32 friendsId = 7;
+}
+message Cats {
+  repeated CatDto cats = 1;
+}
 service OwnerService {
-  rpc findOwnerById (OwnerId) returns (OwnerDto);
+  rpc findOwnerById (Id) returns (OwnerDto);
   rpc findOwnerByName (OwnerName) returns (OwnerDto);
+}
+service CatService {
+  rpc findCatById (SecurityId) returns (CatDto);
+  rpc findCatsByColor (SecurityColor) returns (Cats);
 }

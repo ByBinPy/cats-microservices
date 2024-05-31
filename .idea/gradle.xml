@@ -27,6 +27,20 @@
           </set>
         </option>
       </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/lab5" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/lab5" />
+            <option value="$PROJECT_DIR$/lab5/cat" />
+            <option value="$PROJECT_DIR$/lab5/common" />
+            <option value="$PROJECT_DIR$/lab5/controllers" />
+            <option value="$PROJECT_DIR$/lab5/data" />
+            <option value="$PROJECT_DIR$/lab5/owner" />
+          </set>
+        </option>
+      </GradleProjectSettings>
     </option>
   </component>
 </project>

@@ -1,6 +1,8 @@
 package itmo.tech.controllers;
 
-import itmo.tech.messaging.rpc.OwnerClient;
+import itmo.tech.dto.OwnerDto;
+import itmo.tech.messaging.rabbitmq.owner.RabbitOwnerProducer;
+import itmo.tech.messaging.rpc.OwnerRpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,30 +13,35 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/owner")
 public class OwnerController {
 
-    private final OwnerClient ownerClient;
+    private final OwnerRpcClient ownerRpcClient;
+    private final RabbitOwnerProducer ownerProducer;
 
     @Autowired
-    public OwnerController(OwnerClient ownerClient) {
-        this.ownerClient = ownerClient;
+    public OwnerController(OwnerRpcClient ownerRpcClient, RabbitOwnerProducer ownerProducer) {
+        this.ownerRpcClient = ownerRpcClient;
+        this.ownerProducer = ownerProducer;
     }
-    @PreAuthorize("hasAuthority('READ')")
+    @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
     @GetMapping("/find")
-    public ResponseEntity<?> getCatById(@RequestParam Integer ownerId) {
-        return new ResponseEntity<>(ownerClient.findOwnerById(ownerId), HttpStatus.OK);
+    public ResponseEntity<?> getOwnerById(@RequestParam Integer ownerId) throws Exception {
+        return new ResponseEntity<>(ownerRpcClient.findOwnerById(ownerId), HttpStatus.OK);
     }
-/*    @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
+    @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
     @PostMapping("/save")
-    public ResponseEntity<?> saveOwner(@RequestBody OwnerDto ownerDto) throws SaveExistOwner {
-        return ownerClient.save(ownerDto);
+    public ResponseEntity<?> saveOwner(@RequestBody OwnerDto ownerDto) {
+        ownerProducer.sendSaveMessage(ownerDto);
+        return new ResponseEntity<>("Save message has been sent successful", HttpStatus.ACCEPTED);
     }
     @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
     @DeleteMapping("/delete/{id}")
-    public void deleteOwner(@PathVariable("id") Integer ownerId) {
-        ownerClient.delete(ownerId);
+    public ResponseEntity<?> deleteOwner(@PathVariable("id") Integer ownerId) {
+        ownerProducer.sendDeleteMessage(ownerId);
+        return new ResponseEntity<>("Delete message has been sent successful",HttpStatus.ACCEPTED);
     }
     @PreAuthorize("hasAnyAuthority('WRITE', 'READ')")
-    @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateOwner(@PathVariable("id") Integer id, @RequestBody OwnerDto ownerDto) throws UnknownOwner {
-        return ownerClient.update(id, ownerDto);
-    }*/
+    @PutMapping("/update")
+    public ResponseEntity<?> updateOwner(@RequestBody OwnerDto ownerDto){
+        ownerProducer.sendUpdateMessage(ownerDto);
+        return new ResponseEntity<>("Update message has been sent successful", HttpStatus.ACCEPTED);
+    }
 }

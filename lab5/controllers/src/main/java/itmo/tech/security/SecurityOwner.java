@@ -1,7 +1,6 @@
 package itmo.tech.security;
 
 import itmo.tech.dto.OwnerDto;
-import itmo.tech.entities.Owner;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

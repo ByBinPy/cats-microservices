@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface CatDao extends JpaRepository<Cat, Integer> {
     List<Cat> findCatsByColor(Colors color);
+
 }

@@ -1,13 +1,13 @@
 package itmo.tech.dto;
 
-import itmo.tech.entities.Cat;
 import itmo.tech.enums.Colors;
+import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 @Data
+@Builder
 public class CatDto {
     private Integer id;
     private String name;
@@ -15,5 +15,5 @@ public class CatDto {
     private String breed;
     private Colors color;
     private Integer ownerId;
-    private Set<Integer> friendsId;
+    private List<Integer> friendsId;
 }

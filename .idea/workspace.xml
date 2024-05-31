@@ -4,62 +4,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5e2b6e1-8b65-4926-8aab-74aa8cf88129" name="Changes" comment="fix 4th lab for review">
-      <change afterPath="$PROJECT_DIR$/.idea/modules/lab5/cat/tech-labs.lab5.cat.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/dto/CatDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/dto/OwnerDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/mapping/DtoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/messaging/grpc/OwnerGrpcService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/repositories/CatDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/repositories/OwnerDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/services/CatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/common/src/main/docker/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/common/src/main/docker/init/init.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/common/src/main/java/itmo/tech/rpc/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/common/src/main/proto/rpc.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/ApiMicroserviceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/controllers/CatController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/controllers/OwnerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/dto/OwnerDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/mapping/DtoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/rpc/OwnerClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/security/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/security/SecurityOwner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/security/UserDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/data/src/main/java/itmo/tech/entities/Cat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/data/src/main/java/itmo/tech/entities/Owner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/data/src/main/java/itmo/tech/enums/Colors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/data/src/main/java/itmo/tech/enums/Permissions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/data/src/main/java/itmo/tech/enums/Roles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/OwnerMicroServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/mapping/DtoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rpc/GrpcServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rpc/OwnerGrpcService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/repositories/OwnerDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/owner/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5/src/main/java/itmo/tech/Main.java" afterDir="false" />
+    <list default="true" id="c5e2b6e1-8b65-4926-8aab-74aa8cf88129" name="Changes" comment="add microservises use grpc">
+      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/messaging/grpc/GrpcServerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/messaging/rabbitmq/RabbitConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/messaging/rabbitmq/RabbitConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/controllers/ExceptionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/dto/CatDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/dto/CatShow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/dto/OwnerShow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/rabbitmq/cat/RabbitCatConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/rabbitmq/cat/RabbitCatProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/rabbitmq/owner/RabbitOwnerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/rabbitmq/owner/RabbitOwnerProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/rpc/CatRpcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/controllers/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/dto/OwnerDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rabbitmq/RabbitConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rabbitmq/RabbitConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab2f8dde-edae-4552-b539-96fbedb28548.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab2f8dde-edae-4552-b539-96fbedb28548/storage_v2/_src_/database/pdb.7rABAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab2f8dde-edae-4552-b539-96fbedb28548/storage_v2/_src_/database/pdb.7rABAA/schema/cats_db.oFwnIQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab2f8dde-edae-4552-b539-96fbedb28548/storage_v2/_src_/database/pdb.7rABAA/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab2f8dde-edae-4552-b539-96fbedb28548/storage_v2/_src_/database/pdb.7rABAA/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab2f8dde-edae-4552-b539-96fbedb28548/storage_v2/_src_/database/pdb.7rABAA/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab2f8dde-edae-4552-b539-96fbedb28548/storage_v2/_src_/database/pdb.7rABAA/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab2f8dde-edae-4552-b539-96fbedb28548/storage_v2/_src_/database/pdb.7rABAA/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/access-layer/tech-labs.access-layer.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/access-layer/tech-labs.access-layer.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/tech-labs.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/tech-labs.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/tech-labs.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/tech-labs.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/access-layer/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/access-layer/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/controllers/OwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/controller/src/main/java/org/example/controllers/OwnerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/service/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/CatMicroServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/dto/CatDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/dto/CatDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/dto/OwnerDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/mapping/DtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/mapping/DtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/messaging/grpc/OwnerGrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/messaging/grpc/CatGrpcService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/repositories/CatDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/repositories/CatDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/repositories/OwnerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/repositories/OwnerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/services/CatService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/cat/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/cat/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/common/src/main/docker/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/common/src/main/docker/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/common/src/main/proto/rpc.proto" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/common/src/main/proto/rpc.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/controllers/CatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/controllers/CatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/controllers/OwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/controllers/OwnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/mapping/DtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/mapping/DtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/rpc/OwnerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/rpc/OwnerRpcClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/security/SecurityOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/security/SecurityOwner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/security/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/security/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/data/src/main/java/itmo/tech/entities/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/data/src/main/java/itmo/tech/entities/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/data/src/main/java/itmo/tech/entities/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/data/src/main/java/itmo/tech/entities/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/owner/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/owner/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/mapping/DtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/mapping/DtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rpc/GrpcServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rpc/GrpcServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rpc/OwnerGrpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rpc/OwnerGrpcService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/owner/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/owner/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +185,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;5a29492979683ca8499da54279325930&quot;
+    &quot;spring.configuration.checksum&quot;: &quot;8c860cdce43be7899ec061991a716ce6&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -204,27 +201,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ApiMicroserviceApplication">
-    <configuration name="lab5 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/lab5" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="lab5:common [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -281,6 +257,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CatMicroServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="lab5.cat.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="itmo.tech.CatMicroServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OwnerMicroServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="lab5.owner.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="itmo.tech.OwnerMicroServiceApplication" />
@@ -307,13 +290,26 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="docker/docker-compose.yaml.rabbitmq: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="rabbitmq" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="lab5/common/src/main/docker/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.OwnerMicroServiceApplication" />
+        <item itemvalue="Docker.docker/docker-compose.yaml.rabbitmq: Compose Deployment" />
         <item itemvalue="Gradle.lab5:common [build]" />
         <item itemvalue="Docker.docker/docker-compose.yaml.cat_db: Compose Deployment" />
         <item itemvalue="Gradle.lab5:common [clean]" />
-        <item itemvalue="Gradle.lab5 [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -331,6 +327,8 @@
       <workItem from="1713516224016" duration="4770000" />
       <workItem from="1713530873039" duration="3002000" />
       <workItem from="1717011112236" duration="31206000" />
+      <workItem from="1717093745330" duration="35564000" />
+      <workItem from="1717183437529" duration="10788000" />
     </task>
     <task id="LOCAL-00001" summary="fix 3rd lab">
       <created>1713530819951</created>
@@ -346,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716902350174</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add microservises use grpc">
+      <created>1717093893238</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717093893238</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +385,8 @@
     </ignored-roots>
     <MESSAGE value="fix 3rd lab" />
     <MESSAGE value="fix 4th lab for review" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix 4th lab for review" />
+    <MESSAGE value="add microservises use grpc" />
+    <option name="LAST_COMMIT_MESSAGE" value="add microservises use grpc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -401,34 +407,26 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rpc/OwnerGrpcService.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rabbitmq/RabbitConsumer.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/security/UserDetailsServiceImpl.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/mapping/DtoMapper.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/messaging/rpc/OwnerGrpcService.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/controllers/CatController.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/rpc/OwnerClient.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/lab5/controllers/src/main/java/itmo/tech/messaging/rpc/CatRpcClient.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/lab5/cat/src/main/java/itmo/tech/repositories/OwnerDao.java</url>
-          <line>8</line>
-          <properties class="itmo.tech.repositories.OwnerDao" method="findOwnerByName">
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/lab5/owner/src/main/java/itmo/tech/repositories/OwnerDao.java</url>
           <line>10</line>
           <properties class="itmo.tech.repositories.OwnerDao" method="findOwnerByName">
@@ -442,6 +440,7 @@
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="io.grpc.Metadata" memberName="size" />
+        <PinnedItemInfo parentTag="org.apache.tomcat.util.net.AbstractEndpoint$Handler$SocketState" memberName="name" />
       </pinned-members>
     </pin-to-top-manager>
   </component>

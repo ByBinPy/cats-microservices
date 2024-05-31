@@ -33,7 +33,7 @@ public class Cat {
     private Owner owner;
 
     @Setter
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(schema = "cats_db",
             name="friends",
             joinColumns=  @JoinColumn(name="cat_id", referencedColumnName="id"),

@@ -32,7 +32,7 @@ public class Owner {
     @Column(name = "date_of_birth")
     LocalDate dateOfBirth;
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER )
     @JoinColumn(name = "owner_id")
     List<Cat> cats;
 

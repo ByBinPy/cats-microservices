@@ -1,14 +1,15 @@
 package itmo.tech.messaging.rpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import itmo.tech.owner.OwnerServiceGrpc;
 import itmo.tech.dto.OwnerDto;
+import itmo.tech.dto.OwnerShow;
+import itmo.tech.owner.OwnerServiceGrpc;
 import itmo.tech.messaging.mapping.DtoMapper;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OwnerClient {
+public class OwnerRpcClient {
     private OwnerServiceGrpc.OwnerServiceBlockingStub blockingStub;
     @PostConstruct
     private void init() {
@@ -18,10 +19,10 @@ public class OwnerClient {
                 .build();
         blockingStub = OwnerServiceGrpc.newBlockingStub(managedChannel);
     }
-    public OwnerDto findOwnerById(Integer ownerId) {
+    public OwnerShow findOwnerById(Integer ownerId) {
         return DtoMapper
-                .toOwnerDto(blockingStub
-                .findOwnerById(DtoMapper.toRpcOwnerId(ownerId)));
+                .toOwnerShow(blockingStub
+                .findOwnerById(DtoMapper.toRpcId(ownerId)));
     }
     public OwnerDto findOwnerByName(String name) {
         return DtoMapper
