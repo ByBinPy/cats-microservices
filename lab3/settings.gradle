@@ -1,5 +1,0 @@
-rootProject.name = 'tech-labs'
-include 'access-layer'
-include 'service'
-include 'controller'
-
